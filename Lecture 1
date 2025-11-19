@@ -1,1 +1,12 @@
+Function holo emon ekta jinish ja kichu data input ney , eder upore kichu operation kore and erpore
+kichu ekta output return kore . Function ke ekta machine er sathe compare kora jay .
+
+Recursion holo emon ekta function ja nijei nijeke call kore . Ei function call cholte thake jotokkhon
+na kuno ekta base case meet kore . Base case e emon kichu condition lekha thake jar kaaj amra recursive
+function ke call korar age thekei jani . Jemon factorial of 0 = 0! = 1 . First two value's of 
+fibonacci numbers are 0 and 1 .
+
+Programming e loop diye jei kaaj kora jay shobgula kaaj e recursion diye kora jay . 
+
+Recursion er Time Complexity = No of function calls * Work done in each call
 
