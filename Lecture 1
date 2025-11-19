@@ -7,6 +7,20 @@ function ke call korar age thekei jani . Jemon factorial of 0 = 0! = 1 . First t
 fibonacci numbers are 0 and 1 .
 
 Programming e loop diye jei kaaj kora jay shobgula kaaj e recursion diye kora jay . 
+Recursion er Time Complexity = No of function calls * Work done in each call . 
+Recursion er Space Complexity = (Depth of the recursion Tree / Height of the call stack)
+                                        * ( Memory occupied in each call ) .
 
-Recursion er Time Complexity = No of function calls * Work done in each call
+Recursion er prottek ta call er jonno alada kore ekta memory allocate kora hoy call stack e . Proti ta
+call e alada stack e joma hoy . Jokhon kuno ekta stack er kaaj kora sesh hoy tokhon ta er ager step e
+kichu ekta return kore . Ar memory call stack theke oi recursive call er stack ta shore jay . Eivabe
+jei recursive call ta pore call hoise sheita shobar age stack theke shore jay . Eivabe ekta ekta kore
+stack er kaaj sesh hoye jei poth e oi stack e pouchese oi eki poth diye ferot ashar prokriya ke bole
+Backtracking . Backtracking er khetre jei ongshe recursive call ta kora hoisilo tarpore jodi kuno kaaj
+lekha thake taile oita age songhotito hoy . Erpore oi stack ta call stack theke removed hoy .
+
+ll factorial(ll number){
+    if(number==0) return 1 ; // This is the base case . Karon amra jani 0! = 1 .
+    return number * factorial(number-1) ; // This is the recursive formula for calculating factorial .
+}
 
