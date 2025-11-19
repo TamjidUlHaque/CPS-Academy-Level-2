@@ -36,4 +36,8 @@ kaaj ta korar jonne amra nijeder ei function er upore bissash rakhte pari je thi
 ________________________________________________________________________________________________________________
                              | D y n a m i c   P r o g r a m m i n g |
 ________________________________________________________________________________________________________________
+Basic je fibonacci number er recursive function ta ache er complexity holo exponential . Er mul time complexity
+holo (1.618^n) . Tobe calculation er subidharte complexity O(2^n) calculate kora hoy . Ei complexity komanur 
+proyojon jokhon pore thik tokhoni recursion er scene e chole ashe Dp ba Dynamic Programming .
+
 
