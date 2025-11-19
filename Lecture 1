@@ -19,8 +19,21 @@ stack er kaaj sesh hoye jei poth e oi stack e pouchese oi eki poth diye ferot as
 Backtracking . Backtracking er khetre jei ongshe recursive call ta kora hoisilo tarpore jodi kuno kaaj
 lekha thake taile oita age songhotito hoy . Erpore oi stack ta call stack theke removed hoy .
 
+Memory te stack er ekta limit thake . Jodi oi limit theke beshi stack memory te eki sathe joma hoy 
+tahole runtime error ba segmentation fault hobe stackoverflow er karone . Ar jodi nirdisto shomoy
+er vitore shobgula call shomponno na hoy recursive call er tahole time limit exceeded hoye jay .
+
 ll factorial(ll number){
     if(number==0) return 1 ; // This is the base case . Karon amra jani 0! = 1 .
     return number * factorial(number-1) ; // This is the recursive formula for calculating factorial .
 }
+
+Ekhan porjonto basic recursion er sathe porichoy koranu hoise . Recursion use koira Dynamic Programming
+er 99% problem solve kore fela jay . Ar DP holo programming world e explore korar jonno best ekta topic .
+Loop er bodole recursion keno use korbo ? Ashole recursion emon onek subidha dey ja loop dite pare na jokhon
+case gula complex hoy . Recursion e kuno ekta kaaj er shobcheye chuto step ta amra thik vabe kore felle baki
+kaaj ta korar jonne amra nijeder ei function er upore bissash rakhte pari je thikvabe ei kaaj gula kore dibe.
+________________________________________________________________________________________________________________
+                             | D y n a m i c   P r o g r a m m i n g |
+________________________________________________________________________________________________________________
 
