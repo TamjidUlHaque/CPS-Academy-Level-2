@@ -1,0 +1,8 @@
+Bangla Definition of DP :- Eki calculation amra ekbarer beshi korbo nah . Calculated value store kore rakhbo kuthaw .
+
+Dp er problem solve korar upay holo :- 1) Valo kore proshno ta porbo , 2) Ekta brute force recursive code lekhar try
+korbo , 3) Jodi brute force recursive code likhte pari tahole kun value ta store kore rakhle complexity kombe ta khujbo.
+Orthat jodi function ta kuno ekta stage e bar bar jay tobe oi state ta memoization ba memory te save kore rakhbo .
+
+(*) Dp diye sadharonoto duita basic jinish korte bole . Egula holo :-
+1) Counting the number of ways any work can be done , 2) Minimization or Maximization the number of steps .
