@@ -40,4 +40,122 @@ Basic je fibonacci number er recursive function ta ache er complexity holo expon
 holo (1.618^n) . Tobe calculation er subidharte complexity O(2^n) calculate kora hoy . Ei complexity komanur 
 proyojon jokhon pore thik tokhoni recursion er scene e chole ashe Dp ba Dynamic Programming .
 
+Dp er main speciality holo jokhon amra dekhi kuno ekta recursive function eki jinish bar bar calculate kortese
+tokhon amra calculate houwa value gula ekta array teh age thekei store kore rekhe dei . Jei array ta value gula
+ke store kore rakhe oi array tar e FANCY NAME holo DP array . Ar ei technique tar naam holo memoization .
 
+DP array tar size question e dewa constraints er upore nirvor kore . Sadharonoto constraints e je size dewa thake
+tar cheye ektu boro ekta DP array globally newa hoy and memset use kore proti ta index e impossible value store
+kore rakha hoy . Calculation er shomoy check kora hoy index e store value ta ki impossible ki na . Jodi impossible
+hoy taile calculate korar proyojon pore , nahole stored value return korle e chole . Sudhu matro ei technique ta
+use korar karone fibonacchi series er time complexity er value O(2^n) theke kome O(n) hoye jay . 
+
+const int MOD = 1e5+33 ;
+const int SIZE = 1e5 + 7 ;
+int value[SIZE] ;
+int mark[SIZE] ;
+
+int fibonacci(int num){// Dynamic Programming er basic structure .
+    // Check the base case , if the base case meets then return value .
+    if(num == 0 or num == 1) return num ;
+    // Check if the value is already stored in the memory or not .
+    if(mark[num]) return (value[num]%MOD);
+    // If the value is not stored then calculate the value and store it.
+    int result = ((fibonacci(num-1)%MOD) + (fibonacci(num-2)%MOD))%MOD ;
+    mark[num] = 1 ; value[num] = result%MOD ;
+
+    return result%MOD ; // returning the value after calculating it.
+}
+
+int main(){
+    Bismillah() ;
+
+    memset(mark,0,sizeof(mark)) ;
+
+    int n ; cin >> n ;
+
+    cout << fibonacci(n) << sesh ;
+
+    Alhamdulillah ;
+}
+
+Ekhane mark korar jonne alada ekta array declare na kore jodi DP name kebol ekta array declare kore ditam
+and memset(dp,-1,sizeof(dp)) kore dile shompurno array er value -1 diye set hoye jeto . Tokhon amra check
+kortam jodi dp[num] != -1 tahole return dp[num] . Ar nahole calculation er step e jabe .
+
+const int SIZE = 1e5 + 7 ;
+int dp[SIZE] ;
+int fibonacci(int num){
+    if(num == 0 or num == 1) return num ;
+    if(dp[num]!=-1) return dp[num] ;
+    return dp[num] = fibonacci(num-1) + fibonacci(num-2) ;
+}
+int main(){
+    Bismillah() ;
+    memset(dp,-1,sizeof(dp)) ;
+    int n ; cin >> n ;
+    cout << fibonacci(n) << sesh ;
+    Alhamdulillah ;
+}
+____________________________________________________________________________________________________________________
+
+*) Calculate ( a raised to b ) ==> (a^b) efficiently . 
+
+Sadharon vabe a raised to b calculate korar jonne result naam er ekta variable ke 1 diye initialize korbo . tarpore
+b size er ekta loop chaliye result er sathe b bar a multiply korbo jar complexity hobe O(b) . Kintu O(log2(b)) te
+ei value ta calculate kora shomvob . Er jonne amra power jodi even hoy tahole recursively pow/2 er jonno function ta
+ke call korte thakbo ar jodi odd hoy tahole pow-1 er jonne function ta ke call korte thakbo .
+
+ll calculatePower(ll a , ll b){
+    if(b==0) return 1LL ;
+    if(b%2==0){
+        ll temp = calculatePower(a,b/2) ;
+        return (temp * temp) ;
+    }else return (calculatePower(a,b-1) * a) ; 
+}
+______________________________________________________________________________________________________________________
+
+*) Given a set of coin values and a target amount, is it possible to make the target amount using the coins .
+Ei code er time complexity holo O(n*m) jekhane m holo number of coins ar n holo given ammount .
+
+constexpr int maxSize = 1e5+33 ;
+int dp[maxSize] ;
+vi coins{ 5 , 7 , 10 , 13 } ;
+
+bool isItPossible(ll ammount){
+    if(ammount<0) return false ;
+    if(ammount==0) return true ;
+    if(dp[ammount]!=-1) return dp ;
+    int possible = 0 ;
+    for(auto coin:coins){
+        if(isItPossible(ammount-coin)){
+            possible = 1 ; break ;
+        } 
+    }
+    return dp[ammount] = possible ;
+}
+
+
+int main(){
+    Bismillah() ;
+    memset(dp,-1,sizeof(dp)) ;
+    int n ; cin >> n ;
+    cout << isItPossible(n) << sesh ;
+    Alhamdulillah ;
+}
+______________________________________________________________________________________________________________________________
+
+*) Print the digits of a given number using recursion .
+
+Ekhane duita function lekha ache jar moddhe prothom ta recursively number er digit gula print kortese .
+Ar ditiyo function er khetre backTracking er shomoy number gula print hocche . Tai first function ekok theke
+boro sthaniyo maan er dike print kortese , ar second function boro value theke ekhok sthaniyo maan er dike 
+print kortese .
+
+void printDigits(ll n){                   |       void printDigits(ll n){
+    if(n==0) return ;                     |            if(n==0) return ;
+    cout << n % 10 << sesh ;              |            printDigits(n/10) ; 
+    printDigits(n/10) ;                   |            cout << n % 10 << sesh ; 
+}                                         |       }
+
+________________________________________________________________________________________________________________________________
