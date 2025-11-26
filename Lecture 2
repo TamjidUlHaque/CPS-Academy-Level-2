@@ -6,7 +6,7 @@ Orthat jodi function ta kuno ekta stage e bar bar jay tobe oi state ta memoizati
 
 (*) Dp diye sadharonoto duita basic jinish korte bole . Egula holo :-
 1) Counting the number of ways any work can be done , 2) Minimization or Maximization the number of steps .
-
+_____________________________________________________________________________________________________________________________________
 Solving CSES Problem Set Problem { Dice Combinations [ CSES Task 1633 ]
 
 const ll MOD = 1e9 + 7 ; // Answer onek boro hote pare tai integer range e rakhar jonne MOD korte hobe .
@@ -24,3 +24,23 @@ ll DiceCombinations(ll n){
     dp[n] = count ;
     return count ;
 }
+_____________________________________________________________________________________________________________________________________
+Solving LEETCODE Problem Climbing Stairs .
+
+class Solution {
+public:
+    vector<int> dp = vector<int>(50,-1) ;
+    int climbStairs(int n) {
+        if(n==0) return 1 ;
+        if(dp[n]!=-1) return dp[n] ;
+        int result = 0 ; 
+        for(int step = 1 ; step <= 2 ; step++){
+            if(step<=n) result += climbStairs(n-step) ;
+        }
+        dp[n] = result ;
+        return result ;
+    }
+};
+_____________________________________________________________________________________________________________________________________
+This is the end of the second lecture . In this lecture i have learned about how to count the number of ways in basic dp problems.
+
