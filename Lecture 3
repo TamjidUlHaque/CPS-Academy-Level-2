@@ -1,0 +1,5 @@
+Ei lecture e DP er basic problem er 2nd type niye alochona kora hobe ja holo { Minimization , Maximization } .
+_____________________________________________________________________________________________________________________________________
+Solving CSES Problemset Problem { Task 1637 : Removing Digits } 
+On each step , you may subtract one of the digits from the number n . What is the minimum move required to make the number 0 .
+                                                      [ S  o  l  u  t  i  o  n ]
