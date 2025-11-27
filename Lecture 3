@@ -3,3 +3,20 @@ ________________________________________________________________________________
 Solving CSES Problemset Problem { Task 1637 : Removing Digits } 
 On each step , you may subtract one of the digits from the number n . What is the minimum move required to make the number 0 .
                                                       [ S  o  l  u  t  i  o  n ]
+const ll maxSize = 1e6 + 33 ;
+ll dp [maxSize] ;
+
+ll removingDigits(ll val){
+    if(val==0) return 0 ; 
+    if(dp[val]!=-1) return dp[val] ;
+    ll temp = val ; ll ans = infinity ;
+    while(temp){
+        ll x = temp % 10 ; 
+        if(x != 0 ) ans = min(ans, 1 + removingDigits(val-x)) ;
+        temp /= 10 ;
+    }
+    dp[val] = ans ;
+    return ans ;
+}
+_____________________________________________________________________________________________________________________________________
+
