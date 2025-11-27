@@ -31,11 +31,11 @@ void merge(ll l , ll r){
 void mergeSort(ll l , ll r){
     if(l==r) return ; // Jodi l==r hoy tahole array er size 1 . Ar divide korar dorkar nei.
     ll mid = (l+r)/2 ;// Mid point where the array will be divided into two part .
-    cout << "Need to sort : " << sesh ;
+    cout << "Need to sort (left part) : " << sesh ;
     for(int i = l ; i <= mid ; i++) cout << vec[i] << gap ;
     cout << sesh ;
     mergeSort(l,mid) ;
-    cout << "Need to sort : " << sesh ;
+    cout << "Need to sort (right part) : " << sesh ;
     for(int i = mid+1 ; i <= r ; i++) cout << vec[i] << gap ;
     cout << sesh ;
     mergeSort(mid+1,r) ;
