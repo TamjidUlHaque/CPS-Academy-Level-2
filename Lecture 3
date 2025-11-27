@@ -46,4 +46,33 @@ void IcpcDhakaRegionalist2025(){
     ll ans = jumpingFrogs(0) ; cout << ans << sesh ;
 }
 _____________________________________________________________________________________________________________________________________
+Solving Dp problem from atcoder : Frog 1 :-----> https://atcoder.jp/contests/dp/tasks/dp_b .
+                                                      [ S  o  l  u  t  i  o  n ]
+
+ll n , k ;
+vll vec ;
+const ll maxSize = 1e5+33 ;
+ll dp[maxSize] ;
+
+ll jumpingFrogs(ll index){
+
+    if(index==n-1) return 0 ; 
+
+    if(dp[index]!=-1) return dp[index] ;
+
+    ll minCost = infinity ;
+
+    for(int i = 1 ; i <= k ; i++){
+        if(index+i<n) minCost = min(minCost,abs(vec[index]-vec[index+i])+jumpingFrogs(index+i)) ;
+    }
+
+    return dp[index] = minCost ;
+
+}
+
+void IcpcDhakaRegionalist2025(){
+    cin >> n >> k ; vec.resize(n) ; tamjid(n) cin >> vec[i] ;
+    ll ans = jumpingFrogs(0) ; cout << ans << sesh ;
+}
+_____________________________________________________________________________________________________________________________________
 
