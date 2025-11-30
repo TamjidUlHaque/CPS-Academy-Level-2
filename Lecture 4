@@ -55,3 +55,52 @@ void IcpcDhakaRegionalist2025(){
     cout << sesh ;
 }
 ______________________________________________________________________________________________________________________________________________________
+                        [ C o u n t i n g   N u m b e r  o f  I n v e r s i o n s  U s i n g  M e r g e S o r t ]
+
+Kuno ekta array teh jodi duita element x and y thake , x er value y er cheye boro hoy and x , y er age appear kore tahole oita oi array er jonne 
+inversion hishebe count kora hoy . MergeSort er Algorithm er help niye khub shohoje ekta array er inversion count ber kora jay . 
+Formal Definition of Inversion is :-  If for any index  i  <  j   and   a[i]  >  a[j]  this is called an inversion .
+
+                                  { CODE FOR COUNTING INVERSION USING MERGESORT ALGORITHM }
+
+ll sz ; 
+const ll maxSize = 1e5+33 ;
+ll vec[maxSize] ;
+ll temp[maxSize] ;
+
+ll merge(ll low, ll high) {
+    ll mid = (low + high) >> 1; ll inversion = 0 ;
+    ll ptr1 = low, ptr2 = mid + 1, idx = low;
+
+    while (ptr1 <= mid && ptr2 <= high) {
+        if (vec[ptr1] <= vec[ptr2]){
+            temp[idx++] = vec[ptr1++] ;
+        } else {
+            temp[idx++] = vec[ptr2++] ; inversion += (mid-ptr1+1) ;
+        }
+    }
+    while (ptr1 <= mid) {
+        temp[idx++] = vec[ptr1++];
+    }
+    while (ptr2 <= high) {
+        temp[idx++] = vec[ptr2++];
+    }
+    for (ll i = low; i <= high; ++i) vec[i] = temp[i];
+    return inversion ;
+}
+
+ll mergeSort(ll low , ll high){
+    if(low==high) return 0LL ;
+    ll mid = ((low + high)>>1) ;
+    ll a = mergeSort(low,mid) ; 
+    ll b = mergeSort(mid+1,high) ;
+    ll c = merge(low,high) ;
+    return a + b + c ;
+}
+
+
+void IcpcDhakaRegionalist2025(){
+    cin >> sz ; tamjid(sz) cin >> vec[i] ; ll ans = mergeSort(0,sz-1) ;
+    cout << ans << sesh ;
+}  
+______________________________________________________________________________________________________________________________________________________
