@@ -115,3 +115,18 @@ hocche tokhon preSum-target er value previously any number of times occur korte 
 calculate kore rakha hocche . Ar answer er sathe value ta add kore dewa hocche age jei koybar occur hoise . Karon oi subarray jehetu
 jug biyug kore kuno value bartese na tai ager jayga theke eto tukur jugfol hocche 0 . Tar mane age joto tuko ongsho subArraySum = 
 target dicchilo oitukur sathe array er ei part ta jug korle oi kuno problem nai .
+________________________________________________________________________________________________________________________________________
+
+*) How many subArray's are there in the given array whose summation value == 0 ???
+
+void IcpcDhakaRegionalist2025(){
+    ll n ; cin >> n ; ll ans = 0 ; map<ll,ll> mp ;
+    vll vec(n) , preSum(n+2,0) ; tamjid(n) cin >> vec[i] ;
+    tamjid(n) preSum[i+1] = preSum[i] + vec[i] ;
+    for(int i = 0 ; i <= n ; i++){
+        ans += mp[preSum[i]] ; mp[preSum[i]]++ ;
+    }
+    cout << ans << sesh ;
+}
+                                                  [ { ( T H E     E N D ) } ]
+________________________________________________________________________________________________________________________________________
