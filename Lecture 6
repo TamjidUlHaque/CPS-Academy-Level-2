@@ -5,3 +5,113 @@ Er jonne amra jei technique ta apply kori take bole difference array technique .
 kore dei and preCalc[r+1] -= x kore dei .  Ekhon jodi shompurno array tar prefixSum calculate kori tahole amra jei rokom 
 array cheyechilam thik oi rokom ekta array peye jabo . Karon ekhon cumulative sum nile jei jayga porjonto oi x er bistar
 houwar kotha chilo thik oi jayga porjonto oi x bistrito hobe . Erporer index e -x hoye jawar karone x er bistar atke jabe.
+
+void IcpcDhakaRegionalist2025(){
+    ll n ; cin >> n ; vll vec(n+2,0) ; tamjid(n) cin >> vec[i+1] ;
+    ll query ; cin >> query ; 
+    while(query-->0){
+        ll left , right , value ; cin >> left >> right >> value ;
+        vec[left] += value ; vec[right+1] -= value ;
+    }
+    for(int i = 1 ; i < len(vec) ; i++) vec[i] += vec[i-1] ;
+    display(vec) ; cout << sesh ;
+}
+___________________________________________________________________________________________________________________________________
+                                CSES PROBLEMSET TASK 1619 ---> Restaurant Customers 
+Ei proshner moddhe jei concept ta use hoise ta holo value compression . Ekhane input er range dewa ache 1 theke 1e9 porjonto .
+Jehetu 1e7 er order er cheye boro array declare kora jay na tai array use kore difference array diye ei problem ta solve kora jabe
+na . Ei jonne joto gula unique value ache oi gula ke index diye mapping kore rakha hoise map er sahajje . Erpore difference array
+technique apply kore problem ta solve kora hoise . 
+
+void IcpcDhakaRegionalist2025(){
+    ll n ; cin >> n ; vpll vec(n) ; set<ll> sat ; 
+    for(int i = 0 ; i < n ; i++){
+        cin >> vec[i].F >> vec[i].S ; sat.insert(vec[i].F) ; sat.insert(vec[i].S) ;
+    }
+    map<ll,ll> mp ; ll curPosn = 1 ; vll preCalc(len(sat)+3,0) ;
+    for(auto val:sat) mp[val] = curPosn++ ;
+    for(int i = 0 ; i < n ; i++){
+        preCalc[mp[vec[i].F]]++ ; preCalc[mp[vec[i].S]]-- ;
+    }
+    for(int i = 1 ; i < len(preCalc) ; i++){
+        preCalc[i] += preCalc[i-1] ;
+    }
+    cout << *(max_element(all(preCalc))) << sesh ;
+}
+___________________________________________________________________________________________________________________________________
+                                CSES PROBLEMSET TASK 1660 --->  SubArray Sums I 
+
+void IcpcDhakaRegionalist2025(){
+    ll n , target ; cin >> n >> target ; 
+    vll vec(n) ; tamjid(n) cin >> vec[i] ; 
+    ll ans = 0 ; map<ll,bool> visited ; 
+    ll curSum = 0 ; visited[curSum] = true ;
+    for(int i = 0 ; i < n ; i++){
+        if(visited[curSum-target]) ans++ ; 
+        curSum += vec[i] ; visited[curSum] = true ;
+    }
+    if(visited[curSum-target]) ans++ ; 
+    cout << ans << sesh ;
+}
+Ekhane array te previously occurred proti ta value ke true kore rekhe dicchi . Erpore PrefixSum value gular jonne
+check kortesi ( PrefixSum-Target ) er previous occurace ache ki na array teh . Thakle answer ke increment kore dicchi .
+Karon oi occurance er pore nirdisto ekta ongsho jug hoye abar current PrefixSum toiri korse . 
+Orthat currentPrefixSum - Previously Occurred value = Target hole oi ongsho ta mile ekta x sum er subarray toiri kortese.
+
+                                Solved Using Two Pointer Approach / Sliding Window Technique
+
+void IcpcDhakaRegionalist2025(){
+    ll n , target ; cin >> n >> target ; 
+    vll vec(n) ; tamjid(n) cin >> vec[i] ; 
+    ll curSum = 0 ; ll ans = 0 ; ll lptr = 0 , rptr = 0 ;
+    while(rptr<n and curSum<target) {curSum += vec[rptr++] ;}
+    while(lptr<n and rptr < n){
+        if(curSum==target) ans++ ;
+        if(curSum>=target){
+            curSum -= vec[lptr++] ;
+        }else{
+            curSum += vec[rptr++] ;
+        }
+    }
+    if(curSum==target) ans++ ;
+    while(lptr<n){
+        curSum -= vec[lptr++] ; if(curSum==target) ans++ ;
+    }
+    cout << ans << sesh ;
+}
+
+                                                      Solved Using Binary Search
+
+void IcpcDhakaRegionalist2025(){
+    ll n , target ; cin >> n >> target ; ll ans = 0 ;
+    vll vec(n) , preSum(n+2,0) ; tamjid(n) cin >> vec[i] ;
+    tamjid(n) preSum[i+1] = preSum[i] + vec[i] ; preSum[n+1] = infinity ; 
+    for(int i = 0 ; i <= n ; i++){
+        ll index = lower_bound(all(preSum),preSum[i]+target) - preSum.begin() ;
+        if(index<=n){
+            if(preSum[i]+target==preSum[index]) ans++ ;
+        }
+    }
+    cout << ans << sesh ;
+}
+___________________________________________________________________________________________________________________________________
+                                CSES PROBLEMSET TASK 1661 --->  SubArray Sums II
+
+void IcpcDhakaRegionalist2025(){
+    ll n , x ; cin >> n >> x ; ll ans = 0 ; map<ll,ll> mp ;
+    vll vec(n) , preSum(n+2,0) ; tamjid(n) cin >> vec[i] ;
+    tamjid(n) preSum[i+1] = preSum[i] + vec[i] ;
+    for(int i = 0 ; i <= n ; i++){
+        if(mp[preSum[i]-x]) ans += mp[preSum[i]-x] ; 
+        mp[preSum[i]]++ ;
+    }
+    cout << ans << sesh ;
+}
+
+Ei problem tar sathe previous problem tar ektu vinnota royeche . Ei problem er vector er element gular value negative o hote pare .
+Previous problem e chilo shob value >= 1 . Tai oi problem er answer calculation er shomoy amader ke ans er sathe koto add korbo ta
+hishab korte hoy ni . Karon ( preSum-target ) er occurance kebol ekbar e houwa shomvob chilo . Kintu ekhon jokhon negative value add
+hocche tokhon preSum-target er value previously any number of times occur korte pare . Tai kotobar age occur hoise ta ekta map diye
+calculate kore rakha hocche . Ar answer er sathe value ta add kore dewa hocche age jei koybar occur hoise . Karon oi subarray jehetu
+jug biyug kore kuno value bartese na tai ager jayga theke eto tukur jugfol hocche 0 . Tar mane age joto tuko ongsho subArraySum = 
+target dicchilo oitukur sathe array er ei part ta jug korle oi kuno problem nai .
