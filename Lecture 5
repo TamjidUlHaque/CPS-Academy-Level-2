@@ -2,11 +2,7 @@
 ____________________________________________________________________________________________________________________________________________
 Jokhon kuno ekta range er jugfol ba Xor value amader O(1) e ber korte hoy tokhon amra age theke shokol range er jonno kuno ekta value 
 calculate kore rekhe dei jekhan theke O(1) e call kora jay . * ) PrefixSum[i] += ( PrefixSum[i-1] + Arr[i] ) . [ Formula of Prefix Sum ) 
-Query te jodi duita value dewa thake l and r and bolte hobe l theke r porjonto value gular summation ba xor value koto tahole 
-1 )   Summation  =   PrefixSum[r]  -  PrefixSum[l-1]                    2 )    XOR  =  PrefixXOR[r]  ^  PrefixXOR[l-1] ;
-Jodi proti ta query te array er left index theke right index e x add korte bole tahole , arr[l] += x , arr[r+1] -= x . 
-Erpore whole array tar prefixSum calculate korle automatic jei index gula te add houwar kotha add hoye jabe . 
-Ar preCalculatedXor er jonno amader ke arr[l] ^= x . arr[r+1] ^= x korte hobe .
+Query te jodi duita value dewa thake l and r and bolte hobe l theke r porjonto value gular range Summation  = PrefixSum[r] - PrefixSum[l-1]               
 ______________________________________________________________________________________________________________________________________________
                               CSES PROBLEMSET ---> Static Range Sum Queries ( Task 1646 )
 
