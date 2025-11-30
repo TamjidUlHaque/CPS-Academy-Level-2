@@ -1,0 +1,7 @@
+____________________________________________ Difference Array Technique ______________________________________________________
+Ekhane jei problem ta niye deal kortesi ta holo ekta array dewa ache jar proti ta index er value 0 diye initialize kora.
+Amader ke q songkhok query dibe . Oi q songkhok query te l r x dewa thakbe . Jekhane l theke r porjonto x add korte hobe.
+Er jonne amra jei technique ta apply kori take bole difference array technique . Amra shokol l er jonne preCalc[l] += x 
+kore dei and preCalc[r+1] -= x kore dei .  Ekhon jodi shompurno array tar prefixSum calculate kori tahole amra jei rokom 
+array cheyechilam thik oi rokom ekta array peye jabo . Karon ekhon cumulative sum nile jei jayga porjonto oi x er bistar
+houwar kotha chilo thik oi jayga porjonto oi x bistrito hobe . Erporer index e -x hoye jawar karone x er bistar atke jabe.
