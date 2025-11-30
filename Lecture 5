@@ -8,3 +8,63 @@ Jodi proti ta query te array er left index theke right index e x add korte bole 
 Erpore whole array tar prefixSum calculate korle automatic jei index gula te add houwar kotha add hoye jabe . 
 Ar preCalculatedXor er jonno amader ke arr[l] ^= x . arr[r+1] ^= x korte hobe .
 ______________________________________________________________________________________________________________________________________________
+                              CSES PROBLEMSET ---> Static Range Sum Queries ( Task 1646 )
+
+    ll n , q ; cin >> n >> q ; vll vec(n) ; tamjid(n) cin >> vec[i] ; 
+    vll preSum(n+1,0) ; tamjid(n) preSum[i+1] = preSum[i]+vec[i] ;
+    while(q-->0){
+        ll l , r ; cin >> l >> r ;
+        cout << preSum[r]-preSum[l-1] << endl ;
+    }
+______________________________________________________________________________________________________________________________________________
+                              CSES PROBLEMSET ---> Maximum SubArray Sum ( Task 1643 )
+
+void IcpcDhakaRegionalist2025(){
+    ll n ; cin >> n ; vll vec(n) , preSum(n+1,0) ; tamjid(n) cin >> vec[i] ;
+    tamjid(n) preSum[i+1] = preSum[i] + vec[i] ; 
+    ll maxSum = vec[0] ; ll curMin = 0 ;
+    for(int j = 1 ; j <= n ; j++){
+        maxSum = max(maxSum,preSum[j]-curMin) ;
+        curMin = min(curMin,preSum[j]) ;
+    }
+    cout << maxSum << sesh ;
+}
+
+Ei problem ta classic KADANE'S ALGORITHM er problem , kintu prefix sum use kore ei problem ta solve kora jay . Ekhane prothome amra
+shompurno array tar jonne prefix sum calculate kore rakhi . Ekhane amra jei intuition ta use kori ta holo proti ta index ke amra right
+boundary hishabe chinta korbo . Oi right boundary er jonne shorbuccho jei value pawa shomvob ta holo oi index porjonto jei prefixSum
+ache tar theke joto chuto value minus kora jay toto chuto value amra minus korbo . Orthat ekhane amra Array er first theke proti ta
+index er jonne er aag porjonto currentMinimum value ta calculate kore rakhtesi . Ar oi index er value er theke curMin subtract korle
+jei remaining value ta thake take amra Maxsum er moddhe store kore rakhtesi .
+
+
+// This is the classice kadane's algorithm for this problem . Ei algorithm er mul kaaj ta e holo Maximum Subarray Sum ber kora.
+void IcpcDhakaRegionalist2025(){
+    ll n ; cin >> n ; vll vec(n) ; tamjid(n) cin >> vec[i] ;
+    ll curSum = 0 ; ll maxSum = vec[0] ;
+    for(int j = 0 ; j < n ; j++){
+        curSum += vec[j] ; maxSum = max(maxSum,curSum) ;
+        if(curSum<0) curSum = 0 ;
+    }
+    cout << maxSum << sesh ;
+}
+______________________________________________________________________________________________________________________________________________
+                            Finding out the left and the right boundary for the subArray with maximum sum
+
+void IcpcDhakaRegionalist2025(){
+    ll n ; cin >> n ; vll vec(n) , preSum(n+1,0) ; tamjid(n) cin >> vec[i] ;
+    tamjid(n) preSum[i+1] = preSum[i] + vec[i] ; 
+    ll maxSum = vec[0] ; ll curMin = 0 ; ll leftBoundary = 1 , rightBoundary = 1 , x = 0 ;
+    for(int j = 1 ; j <= n ; j++){
+        ll temp = preSum[j]-curMin ;
+        if(temp > maxSum){
+            maxSum = temp ; leftBoundary = x+1 ; rightBoundary = j ;
+        }
+        if(preSum[j]<curMin){
+            curMin = preSum[j] ; x = j ;
+        }
+    }
+    cout << maxSum << gap << leftBoundary << gap << rightBoundary << sesh ;
+}
+______________________________________________________________________________________________________________________________________________
+
