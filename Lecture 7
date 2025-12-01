@@ -1,0 +1,13 @@
+_________________________________________________________________CSES PROBLEMSET TASK 1650 - Range Xor Queries __________________________________________________________
+void IcpcDhakaRegionalist2025(){
+    ll n , q ; cin >> n >> q ; vll vec(n) ; tamjid(n) cin >> vec[i] ;
+    vll preCalc(n+1,0) ; tamjid(n) preCalc[i+1] ^= (preCalc[i] ^ vec[i]) ;
+    while(q--){
+        ll l , r ; cin >> l >> r ;
+        cout << (preCalc[r] ^ preCalc[l-1]) << sesh ;
+    }
+
+Xor er special property er jonne difference array technique ta Range Xor queries er upore apply kora jay . Summation er difference Array toiri korar shomoy amra
+jei kaaj ta kori ta holo left index er value add kore dei and right+1 index e value minus kore dei . Fole prefixSum nile kuno poriborton hoy na . Xor er property holo :-
+1)  0 ^ 0 =  0  ,  2)  0 ^ 1 = 1  ,  3) 1 ^ 0 = 1  ,  4)  1 ^ 1 = 0  .  Common Form holo :-   1)  0 ^ x = x .   2) x ^ x = 0 . Tai ekhane alda operation korte hoy na
+x er value ta prefix xor theke remove korar jonne . Left index e ^ x and right + 1 index e ^ x kore dile automatic difference array er case ta handle hoye jay.
