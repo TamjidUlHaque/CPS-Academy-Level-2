@@ -60,6 +60,9 @@ ei problem ta solve korle jei concept use hoy ei concept ta good subArrays probl
 
 Ekhane muloto agei shobgula value theke eder index ke biyug kore dewa hoise . Jar fole amader ke ar question er condition niye chinta korte hocche na . 
 Ekhon ekta map use kore kun element koybar kore ache ta count kore nicchi . Ar oi element er jonno koto gula emon pair toiri kora jabe ta answer e 
-add kore kore shamner dike ogroshor hocchi.
+add kore kore shamner dike ogroshor hocchi. Ekhane i < j bole dewar karone (i,j) ekta pair hishabe count kortesi kintu (j,i) ke pair hishabe count 
+kortesi na . Ar na hole pair songkha digun hoye jeto . Ekhane freq*(freq-1) / 2 kora hoise , kintu subArray er problem ta teh freq*(freq+1) /2 kora 
+hoisilo . Duitar moddhe ei difference tar karon holo ekhon amra 1 ta element niye pair toiri korte parbo na . Ekta element ke shobshomoy hishab er
+baire rakhte hobe . Ar SubArray er khetre single element o valid subArray toiri korto .
 ________________________________________________________________________________________________________________________________________________________
 
