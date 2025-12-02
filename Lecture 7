@@ -67,5 +67,34 @@ baire rakhte hobe . Ar SubArray er khetre single element o valid subArray toiri 
 
 Jodi value ar index er moddhe ei rokom relation dewa kuno problem next e face kori tahole amader ke shob shomoy same index e thaka value er sathe
 oi index er ekta relation toiri korar chesta korte hobe . Adnan Toky vai life e contest time e ei idea use kore atleast 4 ta problem solve korche.
-________________________________________________________________________________________________________________________________________________________
+_____________________________________________https://atcoder.jp/contests/abc125/tasks/abc125_c________________________________________________________
 
+                                                  {  GCD On BlackBoard  }
+
+ll n ; cin >> n ; vector<long long> vec(n+1,0) ;
+    for(int i = 1 ; i <= n ; i++) cin >> vec[i] ;
+
+    vector<long long> prefix_Gcd(n+2,0) , suffix_Gcd(n+2,0) ;
+
+    for(int i = 1 ; i <= n ; i++){
+        prefix_Gcd[i] = __gcd(prefix_Gcd[i-1],vec[i]) ;
+    }
+
+    for(int i = n ; i >= 1 ; i--){
+        suffix_Gcd[i] = __gcd(suffix_Gcd[i+1],vec[i]) ;
+    }
+
+    ll gosagu = 0 ;
+    for(int i = 1 ; i <= n ; i++) gosagu = __gcd(gosagu,vec[i]) ;
+
+    for(int i = 1 ; i <= n ; i++){
+        ll gcd = __gcd(prefix_Gcd[i-1],suffix_Gcd[i+1]) ;
+        gosagu = max(gosagu,gcd) ;
+    }
+
+    cout << gosagu << sesh ;
+
+Ekhane problem er moddhe bola hoise je , amake ekta array dewa hobe jar jekuno ekta element ami moner iccha moto change korte parbo . 
+Highest possible gcd ami koto gain korte parbo . Ei problem ta solve korar upay hocche suffixGcd ar PrefixGcd niya all possible value 
+er jonne check kora ashole koto baad dewa shomvob .
+__________________________________________________________________________________________________________________________________________________
