@@ -1,1 +1,68 @@
+_______________________________________________Introduction to Binary Search__________________________________________________________
+Basic Binary Searching Code . 
 
+ll n,target ; cin >> n >> target ; vll vec(n) ; tamjid(n) cin >> vec[i] ;
+sort(vec.begin(),vec.end()) ; ll ans = -1 ;
+ll low = 0 ; ll high = n-1 ;
+while(low<high){
+    ll mid = low + (high-low)/2 ;
+    if(vec[mid]<target) low = mid+1 ;
+    else high = mid ;
+}
+cout << low << gap << high << sesh ;
+
+Ekhane low ar high er value same hobe after all the iterations .
+
+________________________________________Keno Binary Search er loop ta Infinite loop hoye jay ??_____________________________________________________________
+Jodi answer er duita occurance ekebare pashapashi thake and amra left = mid lekhi tokhon mid value ber korar shomoy integer division korar 
+karone dekha jay bar bar same mid ashe . Orthat loop ta ekta infinite loop e porinoto hoy . Mane mid er value ar jayga theke move kore shamne
+ba pichone jete pare na . High er value ajibon er jonno low theke boro hoye thake , tai ei problem ta face korte hoy .
+
+while(l<r){
+    ll mid = (l + r) / 2 ;
+    if(vec[mid] > target ) high = mid-1 ;
+    else low = mid ;
+}
+Ei je binary search er code ta ache eita { 1 , 3 , 7 , 7 , 11 } er jonne infinite loop hoye jabe jodi target value hishabe amra 7 ke khujte thaki 
+array er vitore . After first iterartion low = 3 , high = 5 . After second iteration low = 4 , high = 5 . Erpore protibar low er value 4 ashte thakbe.
+Karon mid = (low + high) / 2 . Er maddhome kokhonoi high er value low er shoman ba chuto houwa shomvob na .
+Infinite loop theke bachar jonne amader ke tai low = mid condition ta avoid korte hobe .
+
+__________________________________________Finding the last occurance of a target value in a sorted array_________________________________________________
+
+ll high = vec.size() - 1 ; ll low = 0 ; 
+while(low<=high){
+    ll mid = low + (high-low)/2 ;
+    if(vec[mid]<=target) low = mid+1 ;
+    else high = mid-1 ;
+}
+cout << high << sesh ;
+
+Ei code tar speciality holo eita jotokkhon porjonto shoman ba boro value paite theke totokkhon porjonto left pointer ta shamner dike move
+korte thake . Shorto tar karone shobar last iteration er ager iteration e low == high ekta position e loop ta pouchay jekhane low ba high
+eki index nirdesh kore and oi index e thaka value ta holo target er immidiate boro value . Ei jonne pore high = mid-1 kora hoy jeno thik
+er ager index e high pointer ta pouche . Loop ta break hoy . And amra amader target index er value jeno high er moddhe stored obosthay pai.
+
+_________________________________Nafiul Vai er approach ta holo upper_bound ber kore answer print korar shomoy -1 kore dewa____________________________________
+
+ll high = vec.size()  ; ll low = 0 ; 
+while(low<high){
+    ll mid = low + (high-low)/2 ;
+    if(vec[mid]<=target) low = mid+1 ;
+    else high = mid ;
+}
+cout << high-1 << sesh ;
+
+Ekhane high er moddhe target er value er last occurance er thik pore thaka value tar index store hocche tai -1 korar maddhome amra
+amader target er last occurance er index peye gechi .
+
+                                                              {  Vai er lower_bound er code  }
+
+ll high = vec.size()  ; ll low = 0 ; 
+while(low<high){
+    ll mid = low + (high-low)/2 ;
+    if(vec[mid]<target) low = mid+1 ;
+    else high = mid ;
+}
+cout << low << sesh ;
+_______________________________________________________________________________________________________________________________________________________________
