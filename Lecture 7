@@ -58,4 +58,8 @@ ei problem ta solve korle jei concept use hoy ei concept ta good subArrays probl
     ans += ((freq*(freq-1))>>1) ;
     cout << ans << endl ;
 
+Ekhane muloto agei shobgula value theke eder index ke biyug kore dewa hoise . Jar fole amader ke ar question er condition niye chinta korte hocche na . 
+Ekhon ekta map use kore kun element koybar kore ache ta count kore nicchi . Ar oi element er jonno koto gula emon pair toiri kora jabe ta answer e 
+add kore kore shamner dike ogroshor hocchi.
+________________________________________________________________________________________________________________________________________________________
 
