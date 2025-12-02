@@ -64,5 +64,8 @@ add kore kore shamner dike ogroshor hocchi. Ekhane i < j bole dewar karone (i,j)
 kortesi na . Ar na hole pair songkha digun hoye jeto . Ekhane freq*(freq-1) / 2 kora hoise , kintu subArray er problem ta teh freq*(freq+1) /2 kora 
 hoisilo . Duitar moddhe ei difference tar karon holo ekhon amra 1 ta element niye pair toiri korte parbo na . Ekta element ke shobshomoy hishab er
 baire rakhte hobe . Ar SubArray er khetre single element o valid subArray toiri korto .
+
+Jodi value ar index er moddhe ei rokom relation dewa kuno problem next e face kori tahole amader ke shob shomoy same index e thaka value er sathe
+oi index er ekta relation toiri korar chesta korte hobe . Adnan Toky vai life e contest time e ei idea use kore atleast 4 ta problem solve korche.
 ________________________________________________________________________________________________________________________________________________________
 
