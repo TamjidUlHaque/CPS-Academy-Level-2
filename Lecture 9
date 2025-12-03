@@ -1,1 +1,23 @@
+______________________________________________Finding the first and the last occurance of x in a sorted array ( GeeksForGeeks )___________________________________________________________
+vector<int> find(vector<int>& arr, int x) {
+        vector<int> ans ;
+        int it1 = lower_bound(arr.begin(),arr.end(),x)-arr.begin() ;
+        int it2 = upper_bound(arr.begin(),arr.end(),x)-arr.begin() ;
+        if(it1==it2){
+            ans.push_back(-1) ; ans.push_back(-1) ;
+        }else{
+            ans.push_back(it1) ; ans.push_back(it2-1) ;
+        }
+        return ans ;
+}
+___________________________________________________________________________Generalized Approach of Binary Search__________________________________________________________________________
+Generalized approach bolte bujhay binary search er shobgula problem jei system e solve kore fela jay oi rokom ekta approach . Ei approach er mul je bepar ta holo ekhane ekta
+predicate function thake ja true ba false return kore . Er vitti te amra siddhanto nei amader ke ki korte hobe. Oi predicate function ta chinta korte parlei automatic 
+binarySearching er problem gula solve hoye jay .
 
+ll low = 0 ; ll high = arr.size()-1 ; // This is the search space where the answer will be .
+while(low<high){
+    ll mid = ( high + low ) / 2 ;
+    if(predicateFunction(mid)) low = mid + 1 ; // Ekhane prottek proshner predicate function ta just alada hobe . But binarySearching er Template same e thakbe .
+    else high = mid ;
+}
