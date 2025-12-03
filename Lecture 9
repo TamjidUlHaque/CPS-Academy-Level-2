@@ -1,4 +1,5 @@
 ______________________________________________Finding the first and the last occurance of x in a sorted array ( GeeksForGeeks )___________________________________________________________
+
 vector<int> find(vector<int>& arr, int x) {
         vector<int> ans ;
         int it1 = lower_bound(arr.begin(),arr.end(),x)-arr.begin() ;
@@ -10,7 +11,8 @@ vector<int> find(vector<int>& arr, int x) {
         }
         return ans ;
 }
-___________________________________________________________________________Generalized Approach of Binary Search__________________________________________________________________________
+___________________________________________________________________Generalized Approach of Binary Search__________________________________________________________________________
+
 Generalized approach bolte bujhay binary search er shobgula problem jei system e solve kore fela jay oi rokom ekta approach . Ei approach er mul je bepar ta holo ekhane ekta
 predicate function thake ja true ba false return kore . Er vitti te amra siddhanto nei amader ke ki korte hobe. Oi predicate function ta chinta korte parlei automatic 
 binarySearching er problem gula solve hoye jay .
@@ -18,6 +20,23 @@ binarySearching er problem gula solve hoye jay .
 ll low = 0 ; ll high = arr.size()-1 ; // This is the search space where the answer will be .
 while(low<high){
     ll mid = ( high + low ) / 2 ;
-    if(predicateFunction(mid)) low = mid + 1 ; // Ekhane prottek proshner predicate function ta just alada hobe . But binarySearching er Template same e thakbe .
+    if( predicateFunction(mid) == false ) low = mid + 1 ; // Ekhane prottek proshner predicate function ta just alada hobe . But binarySearching er Template same e thakbe .
     else high = mid ;
 }
+
+__________________________________________________________________Binary Search on a Rotated Sorted Array__________________________________________________________________________
+
+Ekta array once upon a time sorted chilo . Kuno ekta bug houwar karone array tar kuno ekta position porjonto rotated hoye geche . Mane 
+{ 1 , 5 , 9 , 11 , 17 , 24 , 32 } array te bug er karone change hoye { 11 , 9 , 5 , 1 , 17 , 24 , 32 } e convert hoye geche .
+
+void IcpcDhakaRegionalist2025(){
+    ll n ; cin >> n ; vll vec(n) ; tamjid(n) cin >> vec[i] ;
+    ll low = 0 ; ll high = n-1 ;
+    while(low<high){
+        ll mid = (low + high)/2 ;
+        if(vec[mid]<=vec.front()) low = mid+1 ;
+        else high = mid ;
+    }
+    cout << low-1 << sesh ;
+}
+______________________________________________________________O_____________________X______________________O____________________________________________________
