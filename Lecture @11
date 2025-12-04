@@ -1,1 +1,72 @@
+______________________________________https://codeforces.com/group/isP4JMZTix/contest/379072/problem/E______________________________________
 
+void IcpcDhakaRegionalist2025(){
+    ll n ; cin >> n ; vll vec(n) ; tamjid(n) cin >> vec[i] ;
+    nsort(vec) ; ll query ; cin >> query ; 
+    while(query-->0){
+        ll coin ; cin >> coin ; 
+        ll ans = upper_bound(all(vec),coin) - vec.begin() ;
+        cout << ans << sesh ;
+    }
+}
+______________________________________https://codeforces.com/group/isP4JMZTix/contest/379072/problem/G______________________________________
+
+ll n , k ; 
+bool isOkay(ll y){
+    ll x = y - y/n ;
+    return x >= k ;
+}
+void IcpcDhakaRegionalist2025(){
+    cin >> n >> k ;
+    ll low = 1 ; ll high = 1e18 ; 
+    while(low<high){
+        ll mid = low + (high-low)/2 ;
+        if(isOkay(mid)) high = mid ;
+        else low = mid+1 ;
+    }
+    cout << high << endl ;
+}
+
+
+______________________________________https://codeforces.com/group/isP4JMZTix/contest/379072/problem/H______________________________________
+
+    ll n , q ; cin >> n >> q ; vll vec(n) ; 
+    tamjid(n) cin >> vec[i] ; nsort(vec) ;
+    while(q-->0){
+        ll x ; cin >> x ; cout << upper_bound(all(vec),x)-vec.begin() << gap ;
+    }
+______________________________________https://codeforces.com/group/isP4JMZTix/contest/379072/problem/N______________________________________
+                                                    Binary Search Approach
+                                          -----------------------------------------------
+void IcpcDhakaRegionalist2025(){
+    ll n ; cin >> n ; bool isPossible = false ;
+    for(ll i = 1 ; i * i * i <= n ; i++){
+        ll y = n - i*i*i ;
+        if(y<=0) break ;
+        ll low = 1 ; ll high = 1e4 ; 
+        while(low<high){
+            ll mid = low + (high-low)/2 ;
+            if(mid*mid*mid<y) low = mid+1 ;
+            else high = mid ;
+        }
+        if(low*low*low==y){
+            isPossible = true ; break ;
+        }
+    }
+    if(isPossible) yes ;
+    else no ;
+}
+                                                      PreCalculation Method
+                                        -------------------------------------------------------
+void IcpcDhakaRegionalist2025(){
+    ll n ; cin >> n ; unordered_set<ll> storeCubes ;
+    for(ll i = 1 ; i <= 1e4 ; i++){
+        storeCubes.insert(i*i*i) ;
+    }
+    for(ll i = 1 ; i <= 1e4 ; i++){
+        if(storeCubes.count(n-(i*i*i))){
+            yes ; return ;
+        } 
+    }
+    no ;
+}
