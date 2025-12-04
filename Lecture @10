@@ -1,1 +1,47 @@
-
+___________________________________________________________SPOJ MathLove Problem__________________________________________________
+void IcpcDhakaRegionalist2025(){
+    ll n ; cin >> n ; ll low = 1 , high = 3000000000 ;
+    while(low<high){
+        ll mid = low + (high-low) / 2 ;
+        if( mid*(mid+1)/2 < n ) low = mid + 1 ;
+        else high = mid ;
+    }
+    if(low*(low+1)/2 == n) cout << low << sesh ;
+    else cout << "NAI" << sesh ;
+}
+___________________________________________HackerEarth : Monks Encounter with Polynomials______________________________________________
+void IcpcDhakaRegionalist2025(){
+    ll a , b , c , k ; cin >> a >> b >> c >> k ; 
+    ll low = 0 ; ll high = 2e5 ; 
+    while(low<high){
+        ll mid = ( low + high ) / 2 ; 
+        if(a*(mid*mid) + b * mid + c < k) low = mid + 1 ;
+        else high = mid ;
+    }
+    cout << low << sesh ;
+}
+______________________________________________LEETCODE 33 :- Search in a Rotated Sorted Array______________________________________
+class Solution {
+public: // Ekhane amra outer conditional statement er maddhome check kori array er kun part ta sorted . Erpore oi part e BS apply kori.
+    int search(vector<int>& nums, int target) {
+        int len = nums.size() ; int low = 0 , high = len-1 ;
+        while(low<=high){
+            int mid = low + (high-low)/2 ;
+            if(target==nums[mid]) return mid ;
+            if(nums[mid]>=nums[low]){
+                if(nums[low] <= target and target <= nums[mid]){
+                    high = mid-1 ;
+                }else{
+                    low = mid+1 ;
+                }
+            }else{
+                if(nums[mid] <= target and target <= nums[high]){
+                    low = mid+1 ;
+                }else{
+                    high = mid-1 ;
+                }
+            }
+        }
+        return -1 ;
+    }
+};
