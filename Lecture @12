@@ -1,1 +1,41 @@
+___________________________________________https://codeforces.com/problemset/problem/1201/C__________________________________________
+Problem name :- Maximum Median . {{{{{{ Question Statement :- What is the maximum median possible after k operation .
 
+bool maxPossible(ll mid , vll &vec , ll k){
+    ll total = 0 ;
+    for(int i = len(vec)/2 ; i < len(vec) ; i++){
+        total += max(0LL,mid-vec[i]) ;
+    }
+    return (total <= k) ;
+}
+ 
+void giveMeMyGloryBack(){
+    ll n , k ; cin >> n >> k ; vll vec(n) ; tamjid(n) cin >> vec[i] ; nsort(vec) ;
+    ll low = vec[n/2] ; ll high = vec[n/2]+k ; ll ans = low ;
+    while(low<=high){
+        ll mid = low + (high-low)/2 ; 
+        if(maxPossible(mid,vec,k)){
+            ans = mid ; 
+            low = mid+1 ;
+        }else{
+            high = mid-1 ;
+        }
+    } 
+    cout << ans << endl ;
+}
+__________________________________________https://codeforces.com/contest/1873/problem/F_____________________________________________________
+
+void giveMeMyGloryBack() {
+    ll n , k ; cin >> n >> k ; vll fruit(n) , height(n) ;
+    tamjid(n) cin >> fruit[i] ; tamjid(n) cin >> height[i] ;
+    ll l = 0 , r = 1 ; ll curVal = fruit.front() ; ll maxSize = (curVal<=k) ;
+    while(r<n){
+        if(height[r-1]%height[r]==0) curVal += fruit[r] ;
+        else{
+            l = r ; curVal = fruit[l] ;
+        }
+        while(curVal>k) curVal -= fruit[l++] ;
+        maxSize = max(maxSize,r-l+1) ; r++ ;
+    }
+    cout << maxSize << endl ;
+}  
