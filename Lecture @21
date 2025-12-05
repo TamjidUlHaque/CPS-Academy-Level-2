@@ -1,1 +1,45 @@
+________________________________________________________________Template Code for Policy Based Data Structure____________________________________________________
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace std ;
+using namespace __gnu_pbds;
 
+template<typename T>
+using ordered_set = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
+
+-------------------------------------------------------------------https://www.spoj.com/problems/ORDERSET/------------------------------------------------------------------
+
+void IcpcDhakaRegionalist2025(){
+    int query ; cin >> query ; ordered_set<ll> osat ;
+    while(query--){
+        char ch ; cin >> ch ; ll num ; cin >> num ;
+        if(ch=='I') osat.insert(num) ;
+        else if(ch=='D'){ if(osat.find(num) != osat.end()) osat.erase(osat.lower_bound(num)) ;}
+        else if(ch=='C') cout << osat.order_of_key(num) << sesh ;
+        else{
+            if(len(osat)<num) cout << "invalid" << sesh ;
+            else cout << *(osat.find_by_order(num-1)) << sesh ;
+        }
+    }
+}
+
+This is one of the best problem for learning about ordered set . Ei problem ta teh ordered set er upore joto gula opearation chalanu jay almost shobgula operation
+e use hoise . I diye insert , D diye delete , C diye count no of elements smaller than num and K diye find the k-th element of the ordered_set bujhanu hocche .
+
+_______________________________________________________________________https://www.spoj.com/problems/INVCNT/en/____________________________________________________________________
+
+void IcpcDhakaRegionalist2025(){
+    ll n ; cin >> n ; ll inversion = 0 ; 
+    ordered_set<ll> osat ;
+    for(int i = 0 ; i < n ; i++){
+        ll x ; cin >> x ; inversion += len(osat) - osat.order_of_key(x) ;
+        osat.insert(x) ;
+    }
+    cout << inversion << sesh ;
+}
+
+This is another classic problem from spoj which is known as inversion count .
+In an array if the big element comes earlier than the smaller element in the array than those two elements(pair(a[i],a[j]) are called an inversion .
+In an inversion a[i] > a[j] and i < j .
+__________________________________O_________________________________________________________X_______________________________________________________O_______________________________
