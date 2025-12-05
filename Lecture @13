@@ -1,1 +1,41 @@
+_______________________________________________Fractional Bisection______________________________________________________
+Fractional Bisection er khetre Binary Search er Generalized approach er code ta teh ektu poriborto ashbe . Ekhane 
+low = mid+1 ar kora jabe nah . Karon fractional form e kuno number theke thik boro number ta koto eita bola jay na.
+Kew bolbe 1 er cheye boro 1.1 , kew bolbe 1.00000000001 . Kew hoyto aro onek gula 0 add kore seshe 1 add korbe .
+Tai amader ke ekhane amader template code er moddhe poriborton ante hobe .
 
+_________________________________________Template for Binary Search on Integer_____________________________________________
+while(low<high){
+    ll mid = low + (high-low)/2 ;
+    if(!isOkay(mid)) low = mid + 1 ;
+    else high = mid ;
+}
+cout << low - 1 << sesh ;
+
+_________________________________________Template for Fractional Bisection_________________________________________________
+Jehetu floating point thakle exactly porer value ta koto ta janar scope thake na , tai amader ke decision nite hoy 
+decimal point er pore thik koto ghor porjonto error amra sojjo korte parbo . Ei decision newar pore tar upore vitti
+kore amra binary Search kore thaki .
+
+const double error = 1e-6 ;
+double low = 0 ; double high = 1e9 ;
+while( high-low > error ){
+    double mid = low + (high-low)/2 ;
+    if(isOkay(mid)==0) low = mid ;
+    else high = mid ;
+}
+cout << (low+high)/2 << "\n" ;
+
+__________________________________Finding out the square root of a value using Fractional Bisection________________________________________
+
+const double error = 1e-9 ;
+
+double root(double value){
+    double low = 1 , high = value ;
+    while(high-low>error){
+        double mid = (high+low)/2 ;
+        if(mid*mid<value) low = mid ;
+        else high = mid ;
+    }
+    return ((low+high)/2.0) ;
+}
