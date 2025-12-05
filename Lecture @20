@@ -23,3 +23,39 @@ using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statisti
 
 1) osat.order_of_key(value) will give the index of the value     ,   2) *(osat.find_by_order(index)) will give the value of that index .
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+***) ordered_set ke traverse korar jonne sadharonoto duita method follow kora hoy . 
+1) for( auto it = osat.begin() ; it != osat.end() ; it++ ) cout << *it << gap ;     2 ) for( auto val : osat ) cout << val << gap ;
+
+Tobe osat ke normal loop chaliye o iterate kora jay . Tobe ekhetre opeartion gula onekta costly hoye jay . Proti ta value print korte O(log2(osat.size())) complexity hoy .
+for(int i = 0 ; i < osat.size() ; i++) cout << *osat.find_by_order(i) << gap ; // Not recommanded . Use only when necessary .
+
+Jodi find_by_order use kora hoy ar out of bound index function er vitore parameter hishabe dewa hoy tahole garbage value return kore . 
+
+___________________________________________________________________________Count of Smaller Numbers After Self____________________________________________________________________________
+
+Question er moddhe amader ke nums naam er ekta array dewa ache . Array er proti ta index er jonne er right e er theke chuto thik koyta element ache oita 
+amader ke bolte hobe . Ei question ta solve korar shomoy template e less_equal<T> korte hobe . Karon ekhane value er repeatation ghot te pare .
+
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace std ;
+using namespace __gnu_pbds;
+
+template<typename T>
+using ordered_set = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
+class Solution {
+public:
+    vector<int> countSmaller(vector<int>& nums) {
+        ordered_set<int> osat ; vector<int> ans ;
+        for(int i = nums.size()-1 ; i >= 0 ; i--){
+            ans.push_back(osat.order_of_key(nums[i])) ; osat.insert(nums[i]) ;
+        }
+        reverse(ans.begin(),ans.end()) ;
+        return ans ;
+    }
+};
+
+This is a hard tag question of LEETCODE . Ei proshno ta jodi ordered_set diye na kortam tahole kora onek kothin hoye jeto . Kintu ordered_set diye korar karone 
+khub e sohoje amra question ta solve kore felte parsi .
+____________________________________________________________________________________X____________________________________________________________________________________________________
