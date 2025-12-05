@@ -1,1 +1,25 @@
+_______________________________________________________________________Policy Based Data Structure________________________________________________________________________________________
+Ekhane jei problem ta niye vai boltese ta holo dui type er query dewa thakbe . 
+1) ! x  -------> Ei type er query er jonno amader ke element ta ke ekta container e insert korte hobe .
+2) ? x  -------> Ei type er query er jonno sorted obosthay container e er position koto ba er theke chuto koyta element ache ta bolte hobe .
 
+Ei problem ta solve korar jonne etodin porjonto ja ja sikhechi ta diye solve kora jacche nah . Karon map ba set diye insert and sorted rakhar kaaj ta kora jabe,
+kintu er position koto eita bola jabe na . Oi set er vitore amader ke indexing er subidha prodan korar jonno jei Data Struture ta toiri kora hoyeche ta holo
+ordered_set . Eti red-black-tree data structure use kore internally implement kora hoyeche . Eti use korte hole kichu extra header file include korte hoy .
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+#include <bits/stdc++.h>
+// Next two of the header files are introduced to our template only for using ordered set .
+#include <ext/pb_ds/assoc_container.hpp> 
+#include <ext/pb_ds/tree_policy.hpp>
+
+using namespace std ;
+using namespace __gnu_pbds; // This is the namespace standard for policy based data structure .
+
+template<typename T>
+using ordered_set = tree<T, null_type, less<T>, rb_tree_tag, tree_order_statistics_node_update>;
+// order_of_key(k) : no. of elements < k . // Er maddhome ordered_set e k er index koto ta pawa jay .
+// less_equal<T> for multiset. // Jodi insert kora element gular shobgula occurance niye deal korte hoy tahole amra less<T> er jaygay less_equal<T> use kori .
+// *find_by_order(i) : value at index i (0-based) // Er maddhome ordered_set i tomo index e kun value ta ache ta pawa jay .
+
+1) osat.order_of_key(value) will give the index of the value     ,   2) *(osat.find_by_order(index)) will give the value of that index .
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
