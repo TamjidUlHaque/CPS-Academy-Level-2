@@ -19,4 +19,43 @@ Er pore student1.roll = 33 ; student1.name = "Tamjid" ; student1.cgpa = 3.56 ; e
 Ekhon hocche ashol point . Jei notun dataType student amra create korlam oi datatype ke existing dataType er 
 moto use korte parbo . For example , 
 vector<student> vec(n) ; // vector of student dataType , where each index will store the three properties .
+
 for(int i = 0 ; i < n ; i++) cin >> vec[i].roll >> vec[i].name >> vec[i].cgpa ;
+
+Ekhon struct er vitore jemon member hishabe bivinno data member thake thik temon e member function o thakte pare .
+Ei shokol member function amader ke onek gula line er code lekhar haat theke bachiye dey .
+
+struct teacher{
+    string name ; 
+    string department ;
+    double salary ; 
+    int age ;
+    void takeInput(){
+        cin >> name >> department >> salary >> age ;
+    }
+};
+
+ekhane main function er vitore teacher class er ekta object toiri kore teacher1.takeInput() likhle e shob gula 
+input newa hoye jabe . Er karone protibar 4 ta kore input newar line lekhar haat theke amra beche gelam .
+
+_________________________________________________________________________________Custom Comparator________________________________________________________________________________________
+
+bool cmp(int x , int y){
+    if(x<y) return true ;
+    else return false ;
+}
+
+bool comparator( student s1 , student s2){
+    if(s1.cgpa>s2.cgpa) return true ;
+    else return false ;
+}
+
+if(comparator(s1,s2){
+    cout << s1.name << " is a good boy . " << endl ;
+}else{
+    cout << s2.name << " is a good boy . " << endl ;
+}
+
+Comparator er vitore parameter pass korle parameter ta ke shobshomoy pass by reference korar try korbo . Pass by value korle oi datatype er ekta copy toiri hoy ja 
+ekta costly operation . Pass by reference korle direct memory address ta pass kora hoy tai ar copy korar proyojon hoy na .
+___________________________________________O____________________________________________X_______________________________________O_________________________________________________________
