@@ -1,0 +1,22 @@
+___________________________________________________________________________Bit Manipulation____________________________________________________________________________________
+1) Basic Bitwise opeations --> Bitwise OR ( | ) , Bitwise AND ( & ) , Bitwise XOR ( ^ ) , Bitwise LEFT SHIFT ( << ) , Bitwise RIGHT SHIFT ( >> ) , Bitwise Not( ~ ) .
+
+2)  ( x << a ) =  x * pow(2,a)     ,     3)  ( y >> b )  =  y / pow(2,b)  ;
+
+4) ( 1 << x ) means the x-th bit from left . ( 1LL << 3 ) looks like   1 0 0 0 . We can call it a mask . Mask = ( 1LL << x ) .
+Ekhane bit er position count shuru hoy 0 theke . Orthat shobar right er bit ta holo 0th bit , erpore 1st , 2nd , 3rd eivabe .
+i) if( (number & mask) == 1  ) then the x-th bit is set .
+ii) number |= mask ; --->      This operation is used to set the x-th bit .
+iii) number ^= mask ; --->     This opeation is used to toggle the x-th bit .
+iv) number &= (~(mask)) ; ---> This opeation is used to unset the x-th bit .
+
+5) Duita number a ar b ke jug korar shomoy jodi a ba b er kuno ekta position er bit off thake taile oi position er ekta matro bit
+answer er moddhe contribute kore ar jei bit duita tei off ta kuno contribute kore na . Jodi duita bit e on thake tobe duita bit e
+(1LL << x-th bit) contribute kore . Tarmane total contribution er poriman hoy (1LL << x-th bit) er dui gun .
+
+                                                (**)  A + B = A ^ B + 2 * ( A & B )     ;        (**)   A + B = ( A | B ) + ( A & B ) ;
+
+6) Jodi x and y duita songkha hoy and y er je shokol bit set ache jodi x er moddhe o oi shokol bit set thake taile y ke x er sub-mask bole .
+Jodi ( x & y == y ) hoy tahole y holo x er submask .
+
+7) __builtin_popcountll(number) ; ---> Ei function tar time complexity holo O(1) . Jodi number ta integer hoy tokhon amra sesh er ll ta ignore kori .
