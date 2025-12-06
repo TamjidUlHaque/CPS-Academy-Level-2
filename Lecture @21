@@ -43,3 +43,107 @@ This is another classic problem from spoj which is known as inversion count .
 In an array if the big element comes earlier than the smaller element in the array than those two elements(pair(a[i],a[j]) are called an inversion .
 In an inversion a[i] > a[j] and i < j .
 __________________________________O_________________________________________________________X_______________________________________________________O_______________________________
+                                                Part by part explaination of this header file
+
+template<typename T>
+using ordered_set = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
+
+1) template<typename T> use korar karon holo ordered_set er vitore jekuno data type er value input hishabe dite pare .
+Ekhane pair , double , long long , int , char shobgula e ekhon kaaj korbe . Jodi template<typename T> use na kori 
+tahole long long type er jonne header file ta hobe emon 
+
+using ordered_set = tree<long long, null_type, less_equal<long long>, rb_tree_tag, tree_order_statistics_node_update>;
+
+ar use korar shomoy ekhon ordered_set<long long> likha lagbe na . Kebol ordered_set osat likhe e long long datatype 
+er ordered_set toiri hoye jabe .
+
+2) using ordered_set er mane holo erporer je jinish ta likha ache oita ke amra ki naam diye call korbo . Ekhane 
+using ordered_set er jaygay tamjider_set o hote parto . Kuno problem chilo na .
+
+3) Amra je C++ STL er onno container gula use kori oigular jonne khub e easy naam dewa . Jemon vector , set , map .
+Kintu ordered_set er jonne tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>; naam
+ta dewa . Orthat ei kotha ta likhe bar bar ekta kore ordered set amader ke banate hoto jodi uporer part ta 
+amra include na kortam . 
+
+4) tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>
+Ekhane ekta tree data structure ache jar moddhe 
+i) T diye bujha kun type er ordered_set toiri korte cacchi . 
+
+ii) null_type diye bujhay oi amra kebol matro key er set cacchi . Key,Value pair type kicchu cacchi na .
+Er usage dekha jabe jokhon ordered_map toiri korte jabo . Jodi ordered_map use korte chai tahole 
+template<typename T , typename P > using ordered_map = tree < T , P , .............baki ongsho> ;
+Eivabe ordered_map use korte parbo jar upor o find by order ar order of key operation chalanu jabe .
+
+iii) less<T> ei jaygay parameter dewa . Ki onushare sojjito hobe eita ei jayga te likhte hobe . Ekhane less likha ache . 
+Tarmane array ta ascending order e sorted thakbe and notun element probesh korar shomoy er jayga moto position e dhukbe.
+Kintu jodi already set e element ta thake taile dhukbe na . Duplicate element newar jonne less_equal<T> likhte hobe . 
+Jodi greater<T> lekhi ekhon bujhabe amar cheye strictly boro koyta element ache .
+
+iv) rb_tree_tag ---> Ei tree ta holo ekta self balancing binary tree . Ei tree ta use korar karone logarithmic 
+complexity te amra operation gula korte partesi . 
+
+v) tree_order_statistics_node_update --------> Ei parameter tar maddhome e amra emon kichu data vitore store kore rakhi
+jar jonne ordered_set , stl er normal set theke alada . Oi stored data er jonne e find_by_order ba order_of_key opeation
+amra chalate pari oi osat er upore .
+
+
+_____________________________Geeks for Geeks Article on How to use ordered_set code in our day to day life________________________________
+
+// C++ program to demonstrate the
+// ordered set in GNU C++
+#include <iostream>
+using namespace std;
+
+// Header files, namespaces,
+// macros as defined above
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace __gnu_pbds;
+
+#define ordered_set tree<int, null_type,less<int>, rb_tree_tag,tree_order_statistics_node_update>
+
+// Driver program to test above functions
+int main()
+{
+    // Ordered set declared with name o_set
+    ordered_set o_set;
+
+    // insert function to insert in
+    // ordered set same as SET STL
+    o_set.insert(5);
+    o_set.insert(1);
+    o_set.insert(2);
+
+    // Finding the second smallest element
+    // in the set using * because
+    //  find_by_order returns an iterator
+    cout << *(o_set.find_by_order(1)) 
+         << endl;
+
+    // Finding the number of elements
+    // strictly less than k=4
+    cout << o_set.order_of_key(4) 
+         << endl;
+
+    // Finding the count of elements less 
+    // than or equal to 4 i.e. strictly less
+    // than 5 if integers are present
+    cout << o_set.order_of_key(5) 
+         << endl;
+
+    // Deleting 2 from the set if it exists
+    if (o_set.find(2) != o_set.end())
+        o_set.erase(o_set.find(2));
+
+    // Now after deleting 2 from the set
+    // Finding the second smallest element in the set
+    cout << *(o_set.find_by_order(1)) 
+         << endl;
+
+    // Finding the number of
+    // elements strictly less than k=4
+    cout << o_set.order_of_key(4) 
+         << endl;
+
+    return 0;
+}
