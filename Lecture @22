@@ -1,1 +1,63 @@
+_________________________________________________https://www.spoj.com/submit/MEANARR/______________________________________________
 
+#include <bits/stdc++.h>
+#include <ext/pb_ds/assoc_container.hpp>
+#include <ext/pb_ds/tree_policy.hpp>
+using namespace std ;
+using namespace __gnu_pbds;
+
+template<typename T>
+using ordered_set = tree<T, null_type, less_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
+
+/*
+    Question:- Amader ke ekta n size er array dewa ache . Arekta value
+    k dewa ache . Amader ke bolte hobe emon total koto gula subArray
+    possible jader average ba mean value greater than or equal k .
+
+    Intuition:- Kuno ekta subArray er average calculate kora jay 
+    prefix sum use kore . j+1 theke i tomo index porjonto value
+    gula average value holo :- { prefixSum[i]-prefixSum[j] / (i-j) }
+    Amra cacchi prefixSum[i]-prefixSum[j] / (i-j) >= k jeno hoy .
+    Tahole => prefixSum[i]-prefixSum[j] >= k * (i-j) hobe ,
+    => prefixSum[i] - prefixSum[j] >= k*i - k*j .
+    => prefixSum[i] - k*i >= prefixSum[j] - k*j .
+
+    Ekhon equation ta ekebare simplify hoye geche . Ekhon ei equation
+    ta solve korte parlei number of subarrays pawa jabe .
+    
+    Ekhane answer er moddhe add hobe sequence e pore asha prefixSum
+    er value age asha prefixSum er koto gula value theke boro ba shoman.
+
+*/
+
+void IcpcDhakaRegionalist2025(){
+    ll n , k ; cin >> n >> k ; ll ans = 0 ; ll preSum = 0 ;
+    ordered_set<ll> osat ; osat.insert(preSum) ;
+    for(int i = 1 ; i <= n ; i++){
+        ll x ; cin >> x ; preSum += x ;
+        ll value = preSum - i * k ;
+        ans += osat.order_of_key(value+1) ;
+        osat.insert(value) ;
+    }
+    cout << ans << sesh ;
+}
+
+______________________________________https://leetcode.com/problems/subarray-sum-equals-k/__________________________________________
+Ei problem ta muloto pbds er problem na . Ei problem ta koranur uddessho holo pbds use kore ordered_set er bodole ordered_map
+toiri kora . Ekbar ordered_map toiri hoye gele then baki calculation same e . Ar ei problem ta prefix sum e already adnan toky
+vai dekhaise .
+
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        map<int,int> freq ; int curSum = 0 ; freq[curSum]++ ;
+        int ans = 0 ;
+        for(int i = 0 ; i < nums.size() ; i++){
+            curSum += nums[i] ; ans += freq[curSum-k] ;
+            freq[curSum]++ ;
+        }
+        return ans ;
+    }
+};
+
+_____________________________________X___________________________O_____________________________X_______________________________________
