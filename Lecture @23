@@ -1,1 +1,22 @@
+__________________________________________Introduction to structure and structure sorting_____________________________________________
 
+Structure er implementation kora hoy struct keyword diye . Structure er use sector holo mone kori amra ekta student er naam roll no
+ar exam e pawa CGPA store korte chai . Amader ke existing kuno data structure ei rokom subidha prodan kore na jar maddhome amra 
+ashole shobgula ke store korte pari . Amra hoy to store korte parbo kintu onek oguchalo hoye jabe code ta . Struct use korar 
+maddhome khub e organized way te eita kora shomvob hoy . Structure holo ekta class jeita define kore kirokom type er object er 
+container amra muloto toiri korte cacchi .
+
+struct student{
+    int roll ; 
+    string name ; 
+    double cgpa ;
+};
+
+Ekhane student naam er ekta class create holo . Ekhon eita ke onnanno datatype er moto amra use korte parbo .
+Object create korar jonne amra {{{{{{{{{ student student1 ; }}}}}}}}} ei rokom vabe likhbo . 
+Er pore student1.roll = 33 ; student1.name = "Tamjid" ; student1.cgpa = 3.56 ; eivabe initialize korte parbo.
+
+Ekhon hocche ashol point . Jei notun dataType student amra create korlam oi datatype ke existing dataType er 
+moto use korte parbo . For example , 
+vector<student> vec(n) ; // vector of student dataType , where each index will store the three properties .
+for(int i = 0 ; i < n ; i++) cin >> vec[i].roll >> vec[i].name >> vec[i].cgpa ;
