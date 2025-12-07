@@ -26,7 +26,8 @@ Jodi pair naam e kuno kichu c++ e exist na korto tahole amra struct er sahajje p
 
 struct kromojur{
     ll prothom ; ll ditiyo ;
-}
+};
+
 Ekhon pair<ll,ll> p1 ; je kotha , kromojur k1 eki kotha .
 p1.first = k1.prothom ; p1.second = k1.ditiyo ; Tarmane kromojur holo amader nijeder created pair type struture .
 
