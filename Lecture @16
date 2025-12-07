@@ -59,4 +59,33 @@ wrong khaisi . Ei jinish ta kheyal rakhte hoibo . Median er value (k-1)/2 tomo i
 PBDS er moddhe jokhon element gula re store koira rakha hoy tokhon Jodi less_equal ba greater_equal dei tahole oi ordered_sat
 er upore osat.find() operation porichalona kora jabe na .
 
+-----------------------------------------------------Variable Length Sliding Window----------------------------------------------------
+
+Ekhon jei problem ta niye alochona kora hoise ta holo ekta array er moddhe shobcheye boro consecutive segment kunta jar moddhe kuno
+duplicate value nai . Orthat maximum-sized SubArray who doesn't has any duplicate or every value is unique .
+Ei problem ta solve korar jonne amra deque use korte pari jekhane variable length er window move korbe ar map use korte pari 
+track rakhar jonne window size barate hobe naki komate hobe . Niche ei idea er upore based ekta problem solve kora holo .
+
+_________________________https://cses.fi/problemset/task/1141/__________________________Playlist________________________________________
+
+void IcpcDhakaRegionalist2025(){
+    ll n ; cin >> n ; vll vec(n) ; tamjid(n) cin >> vec[i] ;
+    map<ll,bool> presence ; deque<ll> window ; ll ans = 1 ;
+    
+    for(int i = 0 ; i < n ; i++){
+        if(presence[vec[i]]){
+            while(!window.empty()){
+                ll curVal = window.front() ;
+                window.pop_front() ;
+                presence[curVal] = false ;
+                if(curVal==vec[i]) break ;
+            }
+        }
+        window.pb(vec[i]) ;         presence[vec[i]] = true ; 
+        ll sz = window.size() ;     ans = max(ans,sz) ;
+    }
+
+    cout << ans << sesh ;
+
+}
 
