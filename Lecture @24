@@ -1,2 +1,41 @@
-____________________________________________________________________Sorting using structure and it's usage_____________________________________________________________________________
+________________________________________________________Sorting using structure and it's usage_____________________________________________________________________________
 
+C++ er STL e thaka sort function tar naam holo introsort . Ei sort function ti muloto 3 ta different type of sorting technique
+ke eksathe kore optimize kore bananu hoise . 1) Quick Sort , 2) Heap Sort , 3) Insertion Sort .
+Er basic structure ta holo :- sort( starting pointer , ending pointer , comparator function ) ;
+Ekhane array er khetre array er naam ta e er starting pointer ar arr + size holo ending pointer .
+Vector er khetre starting pointer holo vec.begin() and ending pointer holo vec.end() .
+Generally amra sort korar shomoy kuno comparator function nije theke pass kori nah . 
+*) Reverse Sort korar jonne :- 1) sort(vec.rbegin() , vec.rend())   , 2) sort ( vec.begin() , vec.end() , greater<int>() ) ;
+
+Ekhon amader kaaj holo greater<int>() comparator ta ke nijera banabo . Greater int er kaaj holo duita compare kore boro ta ke age boshanu ;
+bool cmp( int &x , int &y ){
+    return x > y ; // Ekhane amra ja chai thik tai return korte hobe . Amra cacchi je array te jeita age thakbe sheita jeno boro hoy .
+}
+*) Ekhane muloto amra nijeder ke ekta question korbo , er vitti te cmp function ta toiri korbo . Question ta holo x jodi y er cheye boro
+hoy tahole ki array teh x er age thaka uchit ? Jodi amader answer yes hoy tahole return true . Else return false .
+
+Pair er jonne custom comparator toiri korar niyom ;
+
+bool comparator(pair<int,int> &p1 , pair<int,int> p2){
+    if ( p1.first != p2.first() ) p1.first > p2.first ;
+    else p2.second < p1.second ;
+}
+
+Jodi pair naam e kuno kichu c++ e exist na korto tahole amra struct er sahajje pair define kortam .
+
+struct kromojur{
+    ll prothom ; ll ditiyo ;
+}
+Ekhon pair<ll,ll> p1 ; je kotha , kromojur k1 eki kotha .
+p1.first = k1.prothom ; p1.second = k1.ditiyo ; Tarmane kromojur holo amader nijeder created pair type struture .
+
+Structure er subidha holo kebol pair noy amra tuple emonki 4 , 5 , 6 ta element niye o deal korbe emon kichu oi toiri korte pari .
+Amra input output newar jonne loop er vitore lomba line ta na likhe struct er vitore ekta void input baniye vec[i].input() korte pari .
+
+Class e shobar seshe dekhanu hoise je koyekta element dewa ache jara bivinno inverval cover kortese . Tara shobai mile 
+L to R cover kortese ki na ta bolte hobe . 
+Ei question ta answer korar jonne prothome pair er first and second value duita kei ascending order e sort korte hobe . 
+Ascending order e sorted obosthay traverse kore dekhbo je segment segement intersection hocche ki na ba ager pair thik
+jei bindu te sesh hocche porer pair ki thik tar porer bindu theke shuru hocche ki na . jodi emon hoy tahole bujhte hobe
+L to R cover kortese nahole cover kortese nah .
