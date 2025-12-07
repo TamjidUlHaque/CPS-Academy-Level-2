@@ -1,1 +1,60 @@
 ______________________________________________________Sliding Window Technique__________________________________________________________
+
+Sliding window holo ekta technique jeita problem solve korte korte abishkar hoyeche . Eita kuno Data Structure ba algorithm na .
+Ekhane duita pointer mile ekta window gothon kore k size er . Pore ei window er size er shoman element oi leftPointer theke right
+pointer er moddhe probesh korle amra left and right ke ek ghor kore shamner dike egiye niye jai . Oi duita pointer diye toiri je
+window ta move kore oita kei sliding window bole jar vitorer element gula onoboroto change hote thake .
+
+_______________________________Find the maximum and minimum element for every k sized continuous subArrays_______________________________
+
+    ll n , k ; cin >> n >> k ; vll vec(n) ; tamjid(n) cin >> vec[i] ;
+    for(int i = 0 ; i < n-k+1 ; i++){
+        ll minval = infinity ; ll maxval = aura ;
+        for(int j = i ; j < i+k ; j++){
+            minval = min(minval,vec[j]) ;
+            maxval = max(maxval,vec[j]) ;
+        }
+        cout << "In window " << i+1 << gap << " : " << minval << gap << maxval << endl ;
+      }
+This is the brute force code for finding max and min element for each continuous subArrays of size k .
+Ekhane worst case holo window er size n/2 . Tahole bairer loop cholbe n/2 times . Ar prottek bar bairer loop cholar jonne
+vitorer loop cholbe n/2 times . Tar mane ei code er complexity holo O ( (n/2) * (n/2) ) is equivalent to O(n^2) .
+
+-----------------------------------------------Optimized Code using Sliding window technique------------------------------------------
+
+    ll n , k ; cin >> n >> k ; vll vec(n) ; tamjid(n) cin >> vec[i] ;
+    multiset<ll> arr ; ll lptr = 0 ; ll rptr = 0 ;
+    while(rptr-lptr<k) arr.insert(vec[rptr++]) ;
+    while(rptr<n){
+        if(rptr-lptr==k){
+            cout << *arr.begin() << gap << *arr.rbegin() << sesh ;
+            arr.erase(arr.find(vec[lptr++])) ;
+        }else{
+            arr.insert(vec[rptr++]) ;
+        }
+        if(rptr==n) cout << *arr.begin() << gap << *arr.rbegin() << sesh ;
+    }
+
+Ekhane amra multiset use kortesi array ta ke sorted obosthay pawar jonne + ekta kore position slide kortesi . 
+Mane left pointer ekta kore index ke baire ber kore ditese ar right pointer ekta kore element ke array er vitore push
+kortese . Multiset er karone sorting e logarithmic time complexity orjon kora shomvob hoyeche + O(1) ba constant time
+complexity er maddhome smallest and largest element of the k sized subArray calculate kora shomvob hoyeche .
+
+_______________________________CSES SLIDING WINDOW MEDIAN_____________https://cses.fi/problemset/task/1076/_______________________
+
+void IcpcDhakaRegionalist2025(){
+    ll n , k ; cin >> n >> k ; vll vec(n) ; tamjid(n) cin >> vec[i] ; 
+    ordered_set<pair<ll,ll>> osat ; ll lptr = 0 ; ll rptr = 0 ;
+    while(rptr-lptr<k) osat.insert({vec[rptr],rptr++}) ;
+    while(rptr<n){
+        cout << osat.find_by_order((k-1)/2)->F << gap ;
+        osat.erase(osat.find({vec[lptr],lptr++})) ;
+        osat.insert({vec[rptr],rptr++}) ;
+    }
+    cout << osat.find_by_order((k-1)/2)->F << sesh ;
+}
+
+This is the combined application of sliding window + policy based data structures . Ei problem er median ta bair korte giya koyekbar
+wrong khaisi . Ei jinish ta kheyal rakhte hoibo . Median er value (k-1)/2 tomo index e thaka value . Arekta jinish sikhlam ,
+PBDS er moddhe jokhon element gula re store koira rakha hoy tokhon Jodi less_equal ba greater_equal dei tahole oi ordered_sat
+er upore osat.find() operation porichalona kora jabe na .
