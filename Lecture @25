@@ -1,1 +1,84 @@
+_____________________________________________________________Binary Search with Partial Sum and Contribution Technique________________________________________________________________
 
+------------------------------------------------------------------https://codeforces.com/contest/1324/problem/D------------------------------------------------------------------------
+
+My Previous Solution of this problem is using binary Search upper_bound function .
+
+/*Intuition :-
+    Ekhane prothomoto duita array dewa ache ja teacher ar student er interest ke show kortese.
+    For each(i<j) er jonno jodi teacher er agroho beshi thake tahole they are pair of good topics.
+    Ekhon jodi naive approach e jaite chai tahole code er complexity hobe O(n^2) .
+ 
+    Ei jonno amra teacher[i]-student[i] = differenceArray[i] toiri kore nibo complexity komanur jonne.
+    Ekhon difference array ke sort kora jabe . Karon jehetu amader poroborti kaaj holo differenceArray er
+    kun pair gular somosti strictly greater than 0 ber kora tai order matter korbe nah . Karon ekhane unsorted
+    array teh jeita age chilo mone mone dhore nibo sheita e i . Pair er songkha change hobe nah . Hoyto age emon
+    chilo je (ai-bi)>(bj-aj) ekhon hoye geche (aj-bj)>(ai-bi) .
+ 
+    Ekhon difference array er element gula dhori 
+    
+    -2 -1 0 3 5 
+ 
+     Ekhon 1st element er jonno amader atleast -2 + x > 0 emon x er index khuje ber korte hobe .
+     orthat x > 2 hote hobe . Ja binarySearch er upper_bound(-differenceArray[i]) diye define kora .
+     Oi index + er poroborti shokol index question er condition ke satisfy kore . 
+ 
+    Ekhane kheyal korar arekta bishoy holo upper_bound er searching range ta ektu ektu kore chuto hocche.
+    Karon previous value gula already pair toiri kore feleche .
+ 
+*/
+ 
+void giveMeMyGloryBack(){
+    ll n ; cin >> n ; vll teacher(n) ; tamjid(n) cin >> teacher[i] ;
+    vll student(n) ; tamjid(n) cin >> student[i] ; 
+    vll differ(n) ; tamjid(n) differ[i] = teacher[i] - student[i] ; 
+    nsort(differ) ; ll cnt = 0 ;
+    for(int i = 0 ; i < n ; i++){
+        ll ptr = upper_bound(differ.begin()+i+1,differ.end(),-differ[i]) - differ.begin() ;
+        cnt += (n-ptr) ;
+    }
+    cout << cnt << endl ;
+}
+
+_____________________________________________________________________Solution of this problem using ordered_set______________________________________________________________________
+
+/*
+    Intuition :- Ei proshner moddhe bola hoise je ekta pair of topic interesting
+    hobe jodi index ( i < j ) er jonne ( a[i] + a[j] > b[i] + b[j]) hoy . 
+    Amader ke bolte hobe koto gula pair of topic ache jeigula interesting.
+    
+    a[i] + a[j] > b[i] + b[j] 
+=>  a[i] - b[i] > b[j] - a[j]
+
+    Jodi question e given duita array ke c ar d array teh convert kore dei
+    tahole , c[i] = a[i] - b[i] , d[i] = b[i] - a[i] ;
+    Tarmane holo ekhon question ta emon hoy dariyeche je,
+    how many c[i] are there before d[j] who are greater than d[j] ;
+
+    Ekhon ei question tar solution ber korar jonne ordered_set use kora jay .
+    Amader ke i < j er jonne c[i] > d[j] er number of pair answer e add korte hobe.
+
+    Tarmane ekta ordered_set e jodi j-1 porjonto c[i] er element insert kore er moddhe
+    d[j] er value er position order_of_key diye ber kori tahole oi d[j] theke thik
+    koto gula pair ache jara boro ta calculated hoye jabe .
+
+    Jehetu ordered_set e strictly greater element khujtesi tai amader ke ordered_set
+    er condition ta less<T> theke change kore greater_equal<T> korte hobe .
+
+*/
+
+template<typename T>
+using ordered_set = tree<T, null_type, greater_equal<T>, rb_tree_tag, tree_order_statistics_node_update>;
+
+void IcpcDhakaRegionalist2025(){
+    ll n ; cin >> n ; vll vec(n) ; tamjid(n) cin >> vec[i] ;
+    vll arr(n) ; tamjid(n) cin >> arr[i] ; ll ans = 0 ;
+    vll newvec(n) , newarr(n) ; ordered_set<ll> osat ;
+    tamjid(n) newvec[i] = vec[i] - arr[i] ;
+    tamjid(n) newarr[i] = arr[i] - vec[i] ;
+    tamjid(n){
+        ans += osat.order_of_key(newarr[i]) ;    
+        osat.insert(newvec[i]) ;
+    } 
+    cout << ans << sesh ;
+}
