@@ -84,8 +84,60 @@ void IcpcDhakaRegionalist2025(){
         window.pb(vec[i]) ;         presence[vec[i]] = true ; 
         ll sz = window.size() ;     ans = max(ans,sz) ;
     }
-
     cout << ans << sesh ;
+}
+_______________________________________O_____________________________X____________________________O_______________________________________
 
+---------------------------Ternary String---------------------------https://codeforces.com/problemset/problem/1354/B--------------------
+
+This one is my previous solution . It is solved only using intuition and Use of c++ stl .
+
+void giveMeMyGloryBack(){
+    string s ; cin >> s ; vector<pair<char,int>> vec ; int ans = len(s)+2 ;
+    for(int i = 0 ; i < len(s) ; i++){
+        if(vec.empty() or vec.back().F != s[i]){
+            vec.pb({s[i],1}) ;
+        }else{
+            vec.back().S++ ;
+        }
+    }
+ 
+    for(int i = 1 ; i < len(vec)-1 ; i++){
+        if(vec[i-1].F != vec[i+1].F) ans = min(ans,vec[i].S+2) ;
+    }
+    if(ans <= len(s)) cout << ans << endl ;
+    else cout << 0 << endl ;
 }
 
+-------------------This problem has another name called---------Minimum Length containing all the unique chars--------------------------
+
+void IcpcDhakaRegionalist2025(){
+    string s ; cin >> s ; ll n = len(s) ; ll answer = n ;
+    if(count(all(s),'1') and count(all(s),'2') and count(all(s),'3')){
+        
+        deque<char> window ; map<char,int> freq ; queue<char> q ;
+        for(auto &ch:s) q.push(ch) ;
+
+        for(int i = 0 ; i < n ; i++){
+            window.pb(s[i]) ; freq[s[i]]++ ; q.pop() ;
+            if(freq.size()==3) break ;
+        }
+
+        while(true){
+            answer = min(answer,(ll)window.size()) ;
+            char curr = window.front() ;
+            if(freq[curr]==1){
+                while(!q.empty()){
+                    char ch = q.front() ; freq[ch]++ ; 
+                    window.pb(ch) ; q.pop() ;
+                    if(ch==curr) break ;
+                }
+            }
+            freq[curr]-- ; window.pop_front() ;
+            if(freq[curr]==0) break ;
+        }
+        cout << answer << sesh ;
+    }else{
+        cout << 0 << sesh ;
+    }
+}
