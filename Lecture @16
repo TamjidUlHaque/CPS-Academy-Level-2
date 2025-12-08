@@ -108,8 +108,7 @@ void giveMeMyGloryBack(){
     if(ans <= len(s)) cout << ans << endl ;
     else cout << 0 << endl ;
 }
-
--------------------This problem has another name called---------Minimum Length containing all the unique chars--------------------------
+------------------------------Finding minimum length substring that contains a specific set of characters-----------------------------------
 
 void IcpcDhakaRegionalist2025(){
     string s ; cin >> s ; ll n = len(s) ; ll answer = n ;
@@ -141,3 +140,23 @@ void IcpcDhakaRegionalist2025(){
         cout << 0 << sesh ;
     }
 }
+------------------------------Finding minimum length substring that contains a specific set of characters-----------------------------------
+
+void IcpcDhakaRegionalist2025(){
+    string s ; cin >> s ; ll n = len(s) ; ll answer = n ;
+    if(count(all(s),'1') and count(all(s),'2') and count(all(s),'3')){
+        ll lptr = 0 ; ll rptr = 0 ; map<char,ll> mp ;
+        while(rptr<n){
+            mp[s[rptr]]++ ; rptr++ ;
+            while(mp['1'] and mp['2'] and mp['3']){
+                answer = min(answer,rptr-lptr) ;
+                mp[s[lptr]]-- ; lptr++ ;
+            }
+        }
+        cout << answer << sesh ;
+    }else{
+        cout << 0 << sesh ;
+    }
+}
+
+This is the two pointer approach for this solution .
