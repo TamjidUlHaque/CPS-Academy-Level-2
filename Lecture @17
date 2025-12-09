@@ -41,7 +41,7 @@ public:
 A string t will be an anagram of string s , if and only if t er shobgula alphabet re mon moto rearrange koira jodi s banani jay . 
 Aro sohoj kothay jodi s ar t er moddhe shobgula alphabet er frequency count same thake taile ei duita string hoibo anagram .
 
-Solution no 1 for this problem :-
+_____________________________________________________Solution no 1 for this problem_____________________________________________________
 
 class Solution {
 public:
@@ -60,7 +60,7 @@ public:
     }
 };
 
-Solution no 2 for this problem :-
+_____________________________________________________Solution no 2 for this problem_____________________________________________________
 
 class Solution {
 public:
@@ -79,3 +79,33 @@ public:
         return ans ;
     }
 };
+
+----------------------------------Solution 3 which is best because it is working in just O(n) complexity-----------------------------------
+
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+        int n = s.size() ; int k = p.size() ; vector<int> ans ; 
+        if(k>n) return ans ; vector<int> alphabet(26,0),bornomala(26,0) ;
+        for(auto ch:p) alphabet[ch-'a']++ ;
+        for(int i = 0 ; i < k ; i++) bornomala[s[i]-'a']++ ;
+        int matchCount = 0 ;
+        for(int i = 0 ; i < 26 ; i++){
+            if(alphabet[i]==bornomala[i]) matchCount++ ;
+        }
+        for(int i = 0 ; i < n ; i++){
+            int x = s[i] - 'a' ; 
+            if(matchCount==26) ans.push_back(i) ;
+            if(alphabet[x]==bornomala[x]) matchCount-- ;
+            bornomala[x]-- ;
+            if(alphabet[x]==bornomala[x]) matchCount++ ;
+            if(i+k>=n) break ;
+            int y = s[i+k] - 'a' ;
+            if(alphabet[y]==bornomala[y]) matchCount-- ;
+            bornomala[y]++ ;
+            if(alphabet[y]==bornomala[y]) matchCount++ ;
+        }
+        return ans ;
+    }
+};
+_________________________________________X_____________________________O________________________________X_________________________________
