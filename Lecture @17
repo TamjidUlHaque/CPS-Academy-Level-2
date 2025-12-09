@@ -108,4 +108,27 @@ public:
         return ans ;
     }
 };
-_________________________________________X_____________________________O________________________________X_________________________________
+
+--------------------The Smallest Window II-------------------https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_3_B-------------
+
+void IcpcDhakaRegionalist2025(){
+    int n , k ; cin >> n >> k ; int answer = INT_MAX ;
+    vector<int> freq(k+1,0) ; int presence = 0 ;
+    deque<int> window ;
+    for(int i = 0 ; i < n ; i++){
+        int x ; cin >> x ; window.pb(x) ;
+        if(x<=k){
+            freq[x]++ ; if(freq[x]==1) presence++ ;
+        }
+        while(presence==k){
+            answer = min(answer,(int)window.size()) ;
+            ll x = window.front() ; window.pop_front() ;
+            if(x<=k){
+                freq[x]-- ; if(freq[x]<1) presence-- ;
+            }
+        }
+    }
+    cout << (answer == INT_MAX ? 0 : answer) << sesh ;
+}
+
+______________________________________X________________________________O________________________________X_________________________________
