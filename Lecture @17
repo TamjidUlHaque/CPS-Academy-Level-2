@@ -19,3 +19,46 @@ public:
         return ans-minval ;
     }
 };
+
+-------------------------------------------------------Find all anagrams in a string--------------------------------LEETCODE 438------------------------------------------------------------
+A string t will be an anagram of string s , if and only if t er shobgula alphabet re mon moto rearrange koira jodi s banani jay . 
+Aro sohoj kothay jodi s ar t er moddhe shobgula alphabet er frequency count same thake taile ei duita string hoibo anagram .
+
+Solution no 1 for this problem :-
+
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+        vector<int> ans ; multiset<char> sat , fixed ;
+        if(s.size()<p.size()) return ans ;
+        for(int i = 0 ; i < p.size() ; i++) fixed.insert(p[i]) ;
+        for(int i = 0 ; i < s.size() ; i++){
+            sat.insert(s[i]) ;
+            if(sat.size()==fixed.size()){
+                if(sat==fixed) ans.push_back(i-p.size()+1) ;
+                sat.erase(sat.find(s[i-p.size()+1])) ;
+            }
+        }
+        return ans ;
+    }
+};
+
+Solution no 2 for this problem :-
+
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+        vector<int> ans ;
+        if(s.size()<p.size()) return ans ;
+        vector<int> freq(26,0) , count(26,0) ;
+        for(int i = 0 ; i < p.size() ; i++) count[p[i]-'a']++ ;
+        for(int i = 0 ; i < s.size() ; i++){
+            freq[s[i]-'a']++ ;
+            if(i>=(p.size()-1)){
+                if(freq==count) ans.push_back(i-p.size()+1) ;
+                freq[s[i-p.size()+1]-'a']-- ;
+            }
+        }
+        return ans ;
+    }
+};
