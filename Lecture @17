@@ -222,22 +222,25 @@ void IcpcDhakaRegionalist2025(){
     cout << ans << sesh ;
 }
 
----------------------------https://cses.fi/problemset/task/1076/-----------------------Sliding Window Median------------------------------
+_______________________________CSES SLIDING WINDOW MEDIAN_____________https://cses.fi/problemset/task/1076/_______________________
 
 void IcpcDhakaRegionalist2025(){
-    ll n , k ; cin >> n >> k ; vector<pair<ll,ll>> vec ;
-    for(ll i = 0 ; i < n ; i++){
-        ll x ; cin >> x ; vec.pb({x,i}) ;
+    ll n , k ; cin >> n >> k ; vll vec(n) ; tamjid(n) cin >> vec[i] ; 
+    ordered_set<pair<ll,ll>> osat ; ll lptr = 0 ; ll rptr = 0 ;
+    while(rptr-lptr<k) osat.insert({vec[rptr],rptr++}) ;
+    while(rptr<n){
+        cout << osat.find_by_order((k-1)/2)->F << gap ;
+        osat.erase(osat.find({vec[lptr],lptr++})) ;
+        osat.insert({vec[rptr],rptr++}) ;
     }
-    ordered_set<pair<ll,ll>> osat ; 
-    for(ll i = 0 ; i < n ; i++){
-        osat.insert(vec[i]) ;
-        if(i+1>=k){
-            cout << (*osat.find_by_order((k-1)/2)).first << gap ;
-            osat.erase(vec[i-k+1]) ;
-        }
-    }
+    cout << osat.find_by_order((k-1)/2)->F << sesh ;
 }
+
+This is the combined application of sliding window + policy based data structures . Ei problem er median ta bair korte giya koyekbar
+wrong khaisi . Ei jinish ta kheyal rakhte hoibo . Median er value (k-1)/2 tomo index e thaka value . Arekta jinish sikhlam ,
+PBDS er moddhe jokhon element gula re store koira rakha hoy tokhon Jodi less_equal ba greater_equal dei tahole oi ordered_sat
+er upore osat.find() operation porichalona kora jabe na .
+
 
 ____________________________Another Approach For this problem is maintaining two multisets and balancing them_____________________________
 
