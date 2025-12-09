@@ -131,4 +131,51 @@ void IcpcDhakaRegionalist2025(){
     cout << (answer == INT_MAX ? 0 : answer) << sesh ;
 }
 
+---------------------------------------------Implementation in the class by Adnan Toky Vai-----------------------------------------
+
+void IcpcDhakaRegionalist2025(){
+    ll n , k ; cin >> n >> k ; queue<ll> q ; deque<ll> window ; 
+    for(int i = 0 ; i < n ; i++){
+        ll x ; cin >> x ; q.push(x) ;
+    }
+    vector<int> freq(k+1,0) ; ll presence = 0 ; 
+    while(!q.empty()){
+        ll x = q.front() ; q.pop() ; window.pb(x) ; 
+        if(x<=k){
+            freq[x]++ ; 
+            if(freq[x]==1) presence++ ;
+        }
+        if(presence==k) break ;
+    }
+    if(presence<k){
+        cout << 0 << endl ; return ;
+    }
+
+    int answer = (int)window.size() ;
+
+    while(true){
+        if(presence==k) answer = min(answer,(int)window.size()) ;
+
+        ll y = window.front() ; window.pop_front() ;
+        
+        if(y>k) continue ;
+        else{
+            freq[y]-- ; 
+            if(!freq[y]) {
+                presence-- ; 
+                while(!q.empty()){
+                    ll x = q.front() ; q.pop() ; window.pb(x) ;
+                    if(x<=k){
+                        freq[x]++ ; if(freq[x]==1) presence++ ;
+                    }
+                    if(presence==k) break ;
+                }
+            }
+        }
+
+        if(presence != k) break ;
+        
+    }
+    cout << answer << sesh ;
+}
 ______________________________________X________________________________O________________________________X_________________________________
