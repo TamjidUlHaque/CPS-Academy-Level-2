@@ -222,5 +222,67 @@ void IcpcDhakaRegionalist2025(){
     cout << ans << sesh ;
 }
 
+---------------------------https://cses.fi/problemset/task/1076/-----------------------Sliding Window Median------------------------------
+
+void IcpcDhakaRegionalist2025(){
+    ll n , k ; cin >> n >> k ; vector<pair<ll,ll>> vec ;
+    for(ll i = 0 ; i < n ; i++){
+        ll x ; cin >> x ; vec.pb({x,i}) ;
+    }
+    ordered_set<pair<ll,ll>> osat ; 
+    for(ll i = 0 ; i < n ; i++){
+        osat.insert(vec[i]) ;
+        if(i+1>=k){
+            cout << (*osat.find_by_order((k-1)/2)).first << gap ;
+            osat.erase(vec[i-k+1]) ;
+        }
+    }
+}
+
+____________________________Another Approach For this problem is maintaining two multisets and balancing them_____________________________
+
+This approach uses two multisets to solve this problem . First multiset is storing the value of the smallest (k+1)/2 elements and 
+the second multiset is storing the values of the largest n - (k+1)/2 elements . Value gula insert korar shomoy kheyal rakhte hobe 
+je jeno small.rbegin() e thaka value er cheye current element boro hole jeno take second multiset e insert kori . Nahole jeno first
+multiset er vitore insert kori . Ar .erase , .find ei shob opeation er shomoy reverse iterator use kora jabe na . .rbegin() er 
+bodole prev(.end()) bebohar korte hobe . Eita kaaj kore na . Very Very Important .
+
+void IcpcDhakaRegionalist2025(){
+    ll n , k ; cin >> n >> k ; vll vec(n) ; tamjid(n) cin >> vec[i] ;
+    multiset<ll> small , large ; 
+    for(int i = 0 ; i < n ; i++){
+        if(small.empty()){
+            small.insert(vec[i]) ;
+        }else if(*small.rbegin()<vec[i]){
+            large.insert(vec[i]) ;
+        }else{
+            small.insert(vec[i]) ;
+        }
+
+        if(len(small)>len(large)+1){
+            large.insert(*small.rbegin()) ; small.erase(prev(small.end())); ;
+        }
+
+        if(len(large)>len(small)){
+            small.insert(*large.begin()) ; large.erase(large.begin()); ;
+        }
+
+        if(i+1>=k){
+            cout << *small.rbegin() << gap ;
+            if(small.find(vec[i-k+1]) != small.end()) small.erase(small.find(vec[i-k+1])) ;
+            else large.erase(large.find(vec[i-k+1]));
+        }
+
+        if(len(small)>len(large)+1){
+            large.insert(*small.rbegin()) ; small.erase(prev(small.end())); ;
+        }
+
+        if(len(large)>len(small)){
+            small.insert(*large.begin()) ; large.erase(large.begin()); ;
+        }
+        
+    }
+}
+
 
 ______________________________________X________________________________O________________________________X_________________________________
