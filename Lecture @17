@@ -178,4 +178,49 @@ void IcpcDhakaRegionalist2025(){
     }
     cout << answer << sesh ;
 }
+
+---------------------------------Distinct Values Subarrays II------------https://cses.fi/problemset/task/2428/-----------------------
+
+void IcpcDhakaRegionalist2025(){
+    ll n , k ; cin >> n >> k ; vll vec(n) ; tamjid(n) cin >> vec[i] ;
+    ll ans = 0 ; map<ll,ll> mp ; ll lptr = 0 ; ll elem = 0 ; ll rptr = 0 ;
+
+    while(rptr<n){
+        mp[vec[rptr++]]++ ; elem++ ;
+        if(len(mp)<=k) ans += elem ;
+        else{
+            while(len(mp)>k and lptr < rptr){
+                if(mp[vec[lptr]]==1) mp.erase(vec[lptr]) ;
+                else mp[vec[lptr]]-- ;
+                lptr++ ; elem-- ;
+            }
+            ans += elem ;
+        }
+    }
+    cout << ans << sesh ;
+}
+
+
+---------------------------------Distinct Values Subarrays---------------https://cses.fi/problemset/task/3420/-----------------------
+
+void IcpcDhakaRegionalist2025(){
+    ll n ; cin >> n ; vll vec(n) ; tamjid(n) cin >> vec[i] ;
+    map<ll,ll> mp ; ll lptr = 0 , elem = 0 , rptr = 0 , ans = 0 ;
+
+    while(rptr<n){
+        mp[vec[rptr++]]++ ; elem++ ;
+        if(len(mp)==elem) ans += elem ;
+        else{
+            while(len(mp)<elem and lptr < rptr){
+                if(mp[vec[lptr]]==1) mp.erase(vec[lptr]) ;
+                else mp[vec[lptr]]-- ;
+                lptr++ ; elem-- ;
+            }
+            ans += elem ;
+        }
+    }
+    cout << ans << sesh ;
+}
+
+
 ______________________________________X________________________________O________________________________X_________________________________
