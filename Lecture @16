@@ -40,25 +40,6 @@ Mane left pointer ekta kore index ke baire ber kore ditese ar right pointer ekta
 kortese . Multiset er karone sorting e logarithmic time complexity orjon kora shomvob hoyeche + O(1) ba constant time
 complexity er maddhome smallest and largest element of the k sized subArray calculate kora shomvob hoyeche .
 
-_______________________________CSES SLIDING WINDOW MEDIAN_____________https://cses.fi/problemset/task/1076/_______________________
-
-void IcpcDhakaRegionalist2025(){
-    ll n , k ; cin >> n >> k ; vll vec(n) ; tamjid(n) cin >> vec[i] ; 
-    ordered_set<pair<ll,ll>> osat ; ll lptr = 0 ; ll rptr = 0 ;
-    while(rptr-lptr<k) osat.insert({vec[rptr],rptr++}) ;
-    while(rptr<n){
-        cout << osat.find_by_order((k-1)/2)->F << gap ;
-        osat.erase(osat.find({vec[lptr],lptr++})) ;
-        osat.insert({vec[rptr],rptr++}) ;
-    }
-    cout << osat.find_by_order((k-1)/2)->F << sesh ;
-}
-
-This is the combined application of sliding window + policy based data structures . Ei problem er median ta bair korte giya koyekbar
-wrong khaisi . Ei jinish ta kheyal rakhte hoibo . Median er value (k-1)/2 tomo index e thaka value . Arekta jinish sikhlam ,
-PBDS er moddhe jokhon element gula re store koira rakha hoy tokhon Jodi less_equal ba greater_equal dei tahole oi ordered_sat
-er upore osat.find() operation porichalona kora jabe na .
-
 -----------------------------------------------------Variable Length Sliding Window----------------------------------------------------
 
 Ekhon jei problem ta niye alochona kora hoise ta holo ekta array er moddhe shobcheye boro consecutive segment kunta jar moddhe kuno
