@@ -1,0 +1,109 @@
+---------------------------------------------------https://cses.fi/problemset/task/1642/--------------------------Sum of four values----------------------------------------------------------
+
+void IcpcDhakaRegionalist2025(){
+    ll n , k ; cin >> n >> k ; vll vec(n) ; tamjid(n) cin >> vec[i] ;
+    map<ll,pair<ll,ll>> mp ;
+    for(int i = 0 ; i < n ; i++){
+        for(int j = i+1 ; j < n ; j++){
+            ll x = vec[i] + vec[j] ;
+            if(mp.count(k-x)){
+                cout << mp[k-x].F << gap << mp[k-x].S << gap << i+1 << gap << j+1 << sesh ;
+                return ;
+            }
+        }
+        for(int j = 0 ; j < i ; j++){
+            ll x = vec[i] + vec[j] ;
+            mp[x] = {j+1,i+1} ;
+        }
+    }
+    cout << "IMPOSSIBLE" << sesh ;
+}
+
+-------------------------------------------------------------------------https://leetcode.com/problems/longest-nice-subarray/-------------------------------------------------------
+class Solution {
+public:
+    int longestNiceSubarray(vector<int>& nums) {
+        int lptr = 0 ; int rptr = 0 ; int ans = 1 ;
+        int n = nums.size() ; vector<int> bits(32,0) ;
+        while(rptr<n){
+            bool check = true ; 
+            for(int i = 0 ; i < 32 ; i++){
+                if(((1<<i)&nums[rptr])){
+                    if(bits[i]){
+                        check = false ; break ;
+                    }
+                }
+            }
+            if(check){
+                for(int i = 0 ; i < 32 ; i++){
+                    if(((1<<i)&nums[rptr])){
+                        bits[i]++ ;
+                    }
+                }
+                rptr++ ;
+            }else{
+                for(int i = 0 ; i < 32 ; i++){
+                    if(((1<<i)&nums[lptr])){
+                        bits[i]-- ;
+                    }
+                }
+                lptr++ ;
+            }
+            ans = max(ans,rptr-lptr) ;
+        }
+        return ans ;
+    }
+};
+
+Better solution for this problem exists . Solution ---------------------------------------->
+
+class Solution {
+public:
+    int longestNiceSubarray(vector<int>& nums) {
+        int lptr = 0 ; int rptr = 0 ; int ans = 1 ;
+        int n = nums.size() ; int bitmask = 0 ;
+        while(rptr<n){
+            while((bitmask&nums[rptr]) && lptr<=rptr) {
+                bitmask ^= nums[lptr] ; lptr++ ;
+            }
+            bitmask |= nums[rptr] ; rptr++ ;
+            ans = max(ans,rptr-lptr) ;
+        }
+        return ans ;
+    }
+};
+
+--------------------------------------------------------------https://leetcode.com/problems/container-with-most-water/--------------------------------------------------------------------
+
+class Solution {
+public:
+    int maxArea(vector<int>& height) {
+        int lptr = 0 ; int rptr = height.size()-1 ; int ans = 0 ;
+        while(lptr<rptr){
+            ans = max(ans,(rptr-lptr)*(min(height[lptr],height[rptr]))) ;
+            if(height[lptr]<height[rptr]) lptr++ ;
+            else rptr-- ;
+        }
+        return ans ;
+    }
+};
+
+--------------------------------------------------------------https://codeforces.com/problemset/problem/1669/F--------------------------------------------------------------------------
+
+void IcpcDhakaRegionalist2025(){
+    ll n ; cin >> n ; vll vec(n) ; tamjid(n) cin >> vec[i] ;
+    ll alice = 0 ; ll bob = 0 ; ll ac = 0 , bc = 0 ;
+    ll lptr = 0 , rptr = n-1 ; ll ans = 0 ;
+    while(lptr<=rptr){
+        if(alice<=bob){
+            alice += vec[lptr] ; lptr++ ; ac++ ;
+        }else{
+            bob += vec[rptr] ; rptr-- ; bc++ ;
+        }
+        if(alice==bob) ans = ac+bc ;
+    }
+    cout << ans << sesh ;
+}
+
+
+_______________________________________X__________________________________________________O__________________________________________________________X___________________________________
