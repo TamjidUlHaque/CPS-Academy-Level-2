@@ -72,3 +72,26 @@ public:
         return ans ;
     }
 };
+
+------------------------------------------------------https://leetcode.com/problems/long-pressed-name/----------------------------------------
+
+
+class Solution {
+public:
+    bool isLongPressedName(string name, string typed) {
+        if(name.size()>typed.size()) return false ; 
+        if(name.front()!=typed.front()) return false ;
+        int lptr = 0 , rptr = 0 ; 
+        while(rptr<typed.size()){
+            if(lptr>=name.size()) break ;
+            if(name[lptr]==typed[rptr]){
+                lptr++ ; rptr++ ;
+            }else{
+                if(name[lptr-1]==typed[rptr]) rptr++ ;
+                else break ;
+            }
+        }
+        while(name[lptr-1]==typed[rptr] and rptr<typed.size()) rptr++ ;
+        return (lptr==name.size() && (rptr == typed.size())) ;
+    }
+};
