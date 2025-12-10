@@ -95,3 +95,19 @@ public:
         return (lptr==name.size() && (rptr == typed.size())) ;
     }
 };
+
+______________________________________________________________https://cses.fi/problemset/task/1640/_____________________________________________
+
+void IcpcDhakaRegionalist2025(){
+    ll n , k ; cin >> n >> k ; vll vec(n) ; tamjid(n) cin >> vec[i] ;
+    map<ll,ll> mp ; 
+    for(int i = 0 ; i < n ; i++){
+        if(mp[k-vec[i]]){
+            cout << i+1 << gap << mp[k-vec[i]] << sesh ;
+            return ;
+        }
+        mp[vec[i]] = i+1 ;
+    }
+    cout << "IMPOSSIBLE" << sesh ;
+}
+ 
