@@ -1,1 +1,74 @@
 _______________________________________________________________________________Two Pointer Approach__________________________________________________________________________________________
+
+----------------------------------------------------------------https://leetcode.com/problems/merge-sorted-array/description/----------------------------------------------------------------
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        vector<int> ans(m+n+10,0) ; int lptr = 0 , rptr = 0 ;
+        while(lptr<m and rptr<n){
+            if(nums1[lptr]<nums2[rptr]){
+                ans[lptr+rptr] = nums1[lptr] ; lptr++ ;
+            }else{
+                ans[lptr+rptr] = nums2[rptr] ; rptr++ ;
+            }
+        }
+        while(lptr<m){ ans[lptr+rptr] = nums1[lptr] ; lptr++ ; }
+        while(rptr<n){ ans[lptr+rptr] = nums2[rptr] ; rptr++ ; }
+        nums1.clear() ;
+        for(int i = 0 ; i < n+m ; i++) nums1.push_back(ans[i]) ;
+        return ;
+    }
+};
+
+------------------------------------------------------------------------https://leetcode.com/problems/move-zeroes/description/--------------------------------------------------------------
+
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int cnt = 0 ; vector<int> ans ; 
+        for(auto val:nums){
+            if(val) ans.push_back(val) ;
+            else cnt++ ;
+        }
+        for(int i = 0 ; i < cnt ; i++) ans.push_back(0) ;
+        nums = ans ;
+        return ;
+    }
+};
+
+----------------------------------------------------------------------------Class e dekhanu Approach-----------------------------------------------------------------------------------------
+
+class Solution {
+public:
+    void moveZeroes(vector<int>& vec) {
+        int ptr = 0 ;
+        for(int i = 0 ; i < vec.size() ; i++){
+            if(vec[i]){
+                swap(vec[ptr],vec[i]) ; ptr++ ;
+            }
+        }
+        while(ptr<vec.size()) vec[ptr++] = 0 ;
+        return ;
+    }
+};
+
+--------------------------------------------------https://leetcode.com/problems/squares-of-a-sorted-array/description/-----------------------------------------------------------------------
+
+This code is a O(1) approach to solve this problem . Other than that there are many solution of this problem with higher complexity like O(n*log(n)) .
+
+class Solution {
+public:
+    vector<int> sortedSquares(vector<int>& nums) {
+        int lptr = 0 , rptr = nums.size()-1 ; vector<int> ans(nums.size()) ;
+        int idx = ans.size()-1 ;
+        while(lptr<=rptr){
+            if(nums[lptr]*nums[lptr] > nums[rptr]*nums[rptr]){
+                ans[idx--] = (nums[lptr]*nums[lptr]) ; lptr++ ;
+            }else{
+                ans[idx--] = (nums[rptr]*nums[rptr]) ; rptr-- ;
+            }
+        }
+        return ans ;
+    }
+};
