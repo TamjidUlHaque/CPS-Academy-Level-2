@@ -4,7 +4,7 @@ amra oi boro problem ta ke chuto chuto subproblem e divide kore oi subproblem gu
 solution er vittite boro jei problem ta ache oita solve korbo . This technique is known as divide and conquer technique .
 
 Merge sort er khetre array er element gula dui vaag e vaag hote thake jotokkhon na porjonto array er moddhe ekta element baki thake . 
-Jokhon array te kebol ekta matro element baki thake tokhon oi array ta sorted ache . Erpore duita kore sorted array ek niye two pointer
+Jokhon array te kebol ekta matro element baki thake tokhon oi array ta sorted ache . Erpore duita kore sorted array ke niye two pointer
 approach use kore oi duita array ke sort kora hoy . Eivabe size 1 theke 2 , 4 , 8 ...... n  size er sorted array toiri hoy . Ekhane array
 ta dui part e vaag houwar complexity holo O(log2(n)) . Ar vaag houwar pore sort hote hote boro array ta toiri houwar je prokriya oi process
 er time complexity er value holo O(n) . Tahole full process tar complexity holo O(nlog2(n)) .
